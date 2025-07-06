@@ -432,48 +432,52 @@
                 <h2 class="text-center mb-5">Contact Me</h2>
             </div>
         </div>
-        <div class="row mb-4 d-flex justify-content-center text-center">
-            <!-- Phone/WhatsApp Box -->
-            <div class="col-md-4 mb-3 mb-md-0">
-                <div class="contact-box h-100" onclick="openWhatsApp()">
-                    <div class="d-flex align-items-center justify-content-center">
-                        
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="30" height="30" class="ms-2">
+<div class="container d-flex justify-content-center text-center">
+    
+    <div class="row justify-content-center">
+        <!-- WhatsApp -->
+        <div class="col-12 col-md-6 mb-4">
+            <div class="contact-box text-center" onclick="openWhatsApp()" style="cursor: pointer;">
+                <div class="d-flex flex-column align-items-center">
+                    <div class="d-flex align-items-center">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="30" height="30" class="me-2" alt="WhatsApp">
+                        <span>Contact on 6302581405 </span>
                     </div>
-             
-                    <span class="d-block mt-1" style="color: black">Contact me on WhatsApp</span>
-                </div>
-            </div>
-            
-            <!-- GitHub Box -->
-            <div class="col-md-4 mb-3">
-                <a href="https://github.com/prakash-python" class="text-decoration-none">
-                    <div class="contact-box h-100">
-                        <img src="https://cdn-icons-png.freepik.com/512/4494/4494740.png" alt="GitHub" width="30" height="30">
-                        <span>Git Account</span>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="row d-flex justify-content-center text-center">
-            <!-- LinkedIn Box -->
-            <div class="col-md-4 mb-3 mb-md-0">
-                <a href="https://www.linkedin.com/in/prakash-kumar-daram-891191298/" class="text-decoration-none">
-                    <div class="contact-box h-100">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/LinkedIn_icon.svg/2048px-LinkedIn_icon.svg.png" alt="LinkedIn" width="30" height="30">
-                        <span>Linked-In</span>
-                    </div>
-                </a>
-            </div>
-            
-            <!-- Email Box -->
-            <div class="col-md-4">
-                <div class="contact-box h-100">
-                    <img src="https://png.pngtree.com/png-vector/20220612/ourmid/pngtree-gmail-icon-in-simple-style-on-a-white-background-png-image_4998692.png" alt="Email" width="30" height="30">
-                    <span>@daramprakashkumar587@gmail.com</span>
+                    
                 </div>
             </div>
         </div>
+
+        <!-- GitHub -->
+        <div class="col-12 col-md-6 mb-4">
+            <a href="https://github.com/prakash-python" class="text-decoration-none">
+                <div class="contact-box">
+                    <img src="https://cdn-icons-png.freepik.com/512/4494/4494740.png" width="30" height="30" class="me-2" alt="GitHub">
+                    <span>Git Account</span>
+                </div>
+            </a>
+        </div>
+
+        <!-- LinkedIn -->
+        <div class="col-12 col-md-6 mb-4">
+            <a href="https://www.linkedin.com/in/prakash-kumar-daram-891191298/" class="text-decoration-none">
+                <div class="contact-box">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/LinkedIn_icon.svg/2048px-LinkedIn_icon.svg.png" width="30" height="30" class="me-2" alt="LinkedIn">
+                    <span>Linked-In</span>
+                </div>
+            </a>
+        </div>
+
+        <!-- Gmail -->
+        <div class="col-12 col-md-6 mb-4">
+            <div class="contact-box">
+                <img src="https://png.pngtree.com/png-vector/20220612/ourmid/pngtree-gmail-icon-in-simple-style-on-a-white-background-png-image_4998692.png" width="30" height="30" class="me-2" alt="Gmail">
+                <span>@daramprakashkumar587@gmail.com</span>
+            </div>
+        </div>
+    </div>
+</div>
+
     </section>
 
     <footer class="footer">
@@ -517,6 +521,15 @@
         const navLinks = document.querySelectorAll('.nav-link');
         const navbarToggler = document.querySelector('.navbar-toggler');
         const navbarCollapse = document.querySelector('.navbar-collapse');
+
+        document.addEventListener('click', function(event) {
+            const isClickInsideMenu = navbarCollapse.contains(event.target);
+            const isToggler = navbarToggler.contains(event.target);
+            
+            if (!isClickInsideMenu && !isToggler && navbarCollapse.classList.contains('show')) {
+                navbarToggler.click();
+            }
+        });
         
         navLinks.forEach(link => {
             link.addEventListener('mouseover', function() {
