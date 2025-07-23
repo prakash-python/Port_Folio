@@ -97,8 +97,9 @@
         
         .skill-accordion {
             margin-bottom: 10px;
-            border-radius: 5px;
+            border-radius: 20px;
             overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
         }
         
         .skill-box {
@@ -112,11 +113,13 @@
             cursor: pointer;
             transition: all 0.3s ease;
             text-align: center;
+            border-radius: 20px;
         }
         
         .skill-box:hover {
             background-color: #ca6f1e;
             color: aliceblue;
+            border-radius: 20px;
         }
         
         .skill-description {
@@ -250,6 +253,17 @@
                 <h2 class="h3">I am Prakash Kumar Daram</h2>
                 <h1 class="h3">Python Developer</h1>
                 <p class="lead">Please follow the Navbar actions to know more about me.</p>
+                <!-- Social Icons Row -->
+                <div class="d-flex justify-content-start align-items-center mt-4 gap-3">
+                    <!-- WhatsApp -->
+                    <a href="#" onclick="openWhatsApp(); return false;" title="WhatsApp" style="color: #25D366; font-size: 2rem;"><i class="fab fa-whatsapp"></i></a>
+                    <!-- Resume -->
+                    <a href="prakashkumarresume.pdf" target="_blank" title="Resume" style="color: #e67e22; font-size: 2rem;"><i class="fas fa-file-alt"></i></a>
+                    <!-- LinkedIn -->
+                    <a href="https://www.linkedin.com/in/prakash-kumar-daram-891191298/" target="_blank" title="LinkedIn" style="color: #0077b5; font-size: 2rem;"><i class="fab fa-linkedin"></i></a>
+                    <!-- GitHub with light background -->
+                    <a href="https://github.com/prakash-python" target="_blank" title="GitHub" style="background: white; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; box-shadow: 0 1px 4px rgba(0,0,0,0.08);"><i class="fab fa-github" style="color: #333; font-size: 2rem;"></i></a>
+                </div>
             </div>
         </div>
     </section>
