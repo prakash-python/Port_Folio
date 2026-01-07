@@ -643,7 +643,7 @@
             link.addEventListener('mouseover', function() {
                 if (window.innerWidth > 992) {
                     const targetId = this.getAttribute('href').substring(1);
-                    window.location.hash = '#' + targetId;
+                    history.pushState(null, '', ' ');
                     showSection(targetId);
                 }
             });
@@ -651,7 +651,7 @@
                 if (window.innerWidth <= 992) {
                     e.preventDefault();
                     const targetId = this.getAttribute('href').substring(1);
-                    window.location.hash = '#' + targetId;
+                    history.pushState(null, '', ' ');
                     showSection(targetId);
                 }
             });
@@ -659,11 +659,11 @@
 
         // On load, show correct section based on hash
         let hash = window.location.hash;
-        if (!hash || !document.getElementById(hash.substring(1))) {
-            hash = '#home-content';
-            window.location.hash = hash;
+        if (hash && document.getElementById(hash.substring(1))) {
+            showSection(hash.substring(1));
+        } else {
+            showSection('home-content');
         }
-        showSection(hash.substring(1));
 
         window.addEventListener('hashchange', function() {
             const hash = window.location.hash;
