@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,400 +8,85 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Animate.css for subtle enter animations -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+    <link rel="stylesheet" href="assets/css/styles.css">
+
     <style>
-        :root {
-            --bg-color: #09090b;
-            --bg-surface: #18181b;
-            --bg-surface-hover: #27272a;
-            --text-primary: #f4f4f5;
-            --text-secondary: #a1a1aa;
-            --accent-primary: #3b82f6;
-            --accent-glow: rgba(59, 130, 246, 0.5);
-            --gradient-primary: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
-            --border-color: #27272a;
-            --font-main: 'Inter', sans-serif;
-            --font-mono: 'JetBrains Mono', monospace;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-primary);
-            font-family: var(--font-main);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Typography */
-        h1, h2, h3, h4, h5, h6 {
-            font-weight: 700;
-            letter-spacing: -0.02em;
-        }
-        
-        .text-gradient {
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .text-mono {
-            font-family: var(--font-mono);
-            font-size: 0.9em;
-        }
-
-        /* Navbar */
-        .navbar-custom {
-            background: rgba(9, 9, 11, 0.8) !important;
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border-color);
-            padding: 1rem 0;
-            transition: all 0.3s ease;
-        }
-
-        .navbar-brand {
-            font-weight: 700;
-            color: var(--text-primary) !important;
-            letter-spacing: -0.05em;
-        }
-
-        .nav-link {
-            color: var(--text-secondary) !important;
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: color 0.2s ease;
-            position: relative;
-        }
-
-        .nav-link:hover {
-            color: var(--text-primary) !important;
-        }
-
-        /* Buttons */
-        .btn-primary-custom {
-            background: var(--gradient-primary);
-            color: white;
-            border: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 8px;
-            font-weight: 500;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .btn-primary-custom:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 20px var(--accent-glow);
-            color: white;
-        }
-
-        .btn-outline-custom {
-            background: transparent;
-            color: var(--text-primary);
-            border: 1px solid var(--border-color);
-            padding: 0.75rem 1.5rem;
-            border-radius: 8px;
-            font-weight: 500;
-            transition: all 0.2s ease;
-        }
-
-        .btn-outline-custom:hover {
-            background: var(--bg-surface-hover);
-            border-color: var(--text-secondary);
-            color: white;
-        }
-
-        /* Sections */
-        section {
-            padding: 100px 0;
-            position: relative;
-        }
-
-        .section-header {
-            margin-bottom: 3rem;
-        }
-        
-        .section-title {
-            font-size: 2.5rem;
+        .markdown-inject h1,
+        .markdown-inject h2,
+        .markdown-inject h3 {
+            color: #0f172a;
+            margin-top: 2rem;
             margin-bottom: 1rem;
-        }
-
-        .section-subtitle {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-            max-width: 600px;
-        }
-
-        /* Cards */
-        .glass-card {
-            background: var(--bg-surface);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 2rem;
-            transition: transform 0.3s ease, border-color 0.3s ease;
-            height: 100%;
-        }
-
-        .glass-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(59, 130, 246, 0.3);
-            background: linear-gradient(to bottom, #18181b, #1e1e24);
-        }
-
-        /* Badges */
-        .tech-badge {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            color: var(--text-secondary);
-            padding: 0.4rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-family: var(--font-mono);
-            display: inline-block;
-            margin: 0.2rem;
-            transition: all 0.2s ease;
-        }
-        
-        .tech-badge:hover {
-            background: rgba(255,255,255,0.1);
-            color: var(--text-primary);
-        }
-
-        /* Hero Section */
-        #hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding-top: 80px;
-        }
-
-        .hero-title {
-            font-size: clamp(2.5rem, 5vw, 4.5rem);
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
             font-weight: 700;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 0.5rem;
         }
 
-        .hero-summary {
-            font-size: 1.25rem;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-            max-width: 600px;
-        }
-
-        .hero-list {
-            list-style: none;
-            padding: 0;
-            margin-bottom: 2.5rem;
-        }
-
-        .hero-list li {
-            margin-bottom: 0.75rem;
-            font-size: 1.1rem;
-            display: flex;
-            align-items: center;
-        }
-
-        .hero-list i {
-            color: var(--accent-primary);
-            margin-right: 1rem;
-        }
-
-        /* What Makes Me Different */
-        .diff-icon {
-            font-size: 2rem;
-            color: var(--accent-primary);
-            margin-bottom: 1.5rem;
-        }
-
-        /* Experience Pipeline */
-        .exp-item {
-            border-left: 2px solid var(--border-color);
-            padding-left: 2rem;
-            padding-bottom: 3rem;
-            position: relative;
-        }
-
-        .exp-item::before {
-            content: '';
-            position: absolute;
-            left: -9px;
-            top: 0;
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            background: var(--bg-color);
-            border: 2px solid var(--accent-primary);
-        }
-
-        .exp-item:last-child {
-            padding-bottom: 0;
-            border-left-color: transparent;
-        }
-
-        /* Architecture Section */
-        .arch-diagram {
-            background: var(--bg-surface);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 3rem;
+        .markdown-inject pre {
+            background-color: #0f172a;
+            color: #f8fafc;
+            padding: 1.5rem;
+            border-radius: 8px;
             overflow-x: auto;
+            margin-bottom: 1.5rem;
         }
 
-        .arch-flow {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            min-width: 800px;
+        .markdown-inject code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9em;
+            background-color: #f1f5f9;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            color: #ef4444;
         }
 
-        .arch-node {
-            background: #09090b;
-            border: 1px solid rgba(255,255,255,0.1);
-            padding: 1.5rem;
-            border-radius: 12px;
-            text-align: center;
-            width: 140px;
-            position: relative;
-        }
-
-        .arch-node i {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-            display: block;
-        }
-
-        .arch-node span {
-            font-weight: 500;
-            font-size: 0.9rem;
-        }
-
-        .arch-arrow {
-            color: var(--text-secondary);
-            font-size: 1.5rem;
-            animation: pulse-arrow 2s infinite;
-        }
-
-        @keyframes pulse-arrow {
-            0% { opacity: 0.3; transform: translateX(0); }
-            50% { opacity: 1; transform: translateX(5px); }
-            100% { opacity: 0.3; transform: translateX(0); }
-        }
-
-        /* Projects */
-        .project-card {
-            background: var(--bg-surface);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            overflow: hidden;
-            margin-bottom: 4rem;
-        }
-
-        .project-header {
-            padding: 2.5rem;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .project-content {
-            padding: 2.5rem;
-        }
-
-        .project-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-        }
-
-        @media (max-width: 991px) {
-            .project-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .list-check {
-            list-style: none;
+        .markdown-inject pre code {
+            background-color: transparent;
             padding: 0;
-            margin: 0;
+            color: inherit;
         }
 
-        .list-check li {
-            position: relative;
-            padding-left: 1.5rem;
-            margin-bottom: 0.5rem;
-            color: var(--text-secondary);
-        }
-
-        .list-check li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--accent-primary);
-            font-weight: bold;
-        }
-
-        /* Skills */
-        .skill-category {
+        .markdown-inject table {
+            width: 100%;
+            border-collapse: collapse;
             margin-bottom: 2rem;
         }
-        
-        .skill-category h4 {
-            font-size: 1.1rem;
-            color: var(--text-primary);
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
+
+        .markdown-inject th,
+        .markdown-inject td {
+            border: 1px solid #e2e8f0;
+            padding: 0.75rem;
+            text-align: left;
         }
 
-        .skill-category h4 i {
-            margin-right: 0.5rem;
-            color: var(--accent-primary);
+        .markdown-inject th {
+            background-color: #f8fafc;
+            font-weight: 600;
         }
 
-        /* Contact */
-        .contact-item {
-            display: flex;
-            align-items: center;
-            padding: 1.5rem;
-            background: var(--bg-surface);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            color: var(--text-primary);
-            text-decoration: none;
-            transition: all 0.2s ease;
+        .markdown-inject ul,
+        .markdown-inject ol {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
         }
 
-        .contact-item:hover {
-            background: var(--bg-surface-hover);
-            transform: translateY(-2px);
-            color: var(--text-primary);
+        .markdown-inject li {
+            margin-bottom: 0.5rem;
         }
-
-        .contact-icon {
-            font-size: 1.5rem;
-            color: var(--accent-primary);
-            width: 40px;
-        }
-
-        /* Utilities */
-        .glow {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            z-index: -1;
-            opacity: 0.15;
-        }
-
-        .glow-1 { top: 10%; left: 0; width: 400px; height: 400px; background: #3b82f6; }
-        .glow-2 { bottom: 10%; right: 0; width: 500px; height: 500px; background: #8b5cf6; }
-
     </style>
+
 </head>
+
 <body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-offset="100">
 
     <div class="glow glow-1"></div>
@@ -410,7 +96,8 @@
     <nav id="navbar" class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="#hero">
-                <img src="mupicture.jpg" alt="Logo" width="32" height="32" class="me-2 rounded-circle" style="object-fit: cover; border: 2px solid var(--accent-primary);">
+                <img src="mupicture.jpg" alt="Logo" width="32" height="32" class="me-2 rounded-circle"
+                    style="object-fit: cover; border: 2px solid var(--accent-primary);">
                 <span class="text-mono" style="font-size: 0.95em;">Prakash Kumar</span>
             </a>
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -441,12 +128,15 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-7 animate__animated animate__fadeInUp">
-                    <div class="d-inline-block px-3 py-1 rounded-pill mb-4" style="background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.2); color: #60a5fa; font-size: 0.9rem; font-weight: 500;">
+                    <div class="d-inline-block px-3 py-1 rounded-pill mb-4"
+                        style="background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.2); color: #60a5fa; font-size: 0.9rem; font-weight: 500;">
                         Available for Engineering Roles
                     </div>
-                    <h1 class="hero-title">Backend Engineer | <span class="text-gradient">AI-Powered Systems Developer</span></h1>
+                    <h1 class="hero-title">Backend Engineer | <span class="text-gradient">AI-Powered Systems
+                            Developer</span></h1>
                     <p class="hero-summary">
-                        Hi, I’m <strong>Prakash Kumar Daram</strong>. I design and build scalable, production-ready backend architectures, specializing in async task processing and LLM integration.
+                        Hi, I’m <strong>Prakash Kumar Daram</strong>. I design and build scalable, production-ready
+                        backend architectures, specializing in async task processing and LLM integration.
                     </p>
                     <ul class="hero-list">
                         <li><i class="fas fa-server"></i> Django backend architecture & robust REST APIs</li>
@@ -459,7 +149,10 @@
                     </div>
                 </div>
                 <div class="col-lg-5 d-none d-lg-block animate__animated animate__fadeIn animate__delay-1s text-center">
-                    <img src="mupicture.jpg" alt="Prakash Kumar Daram" class="img-fluid" style="border: 5px solid #27272a; border-radius: 15px 100px; max-width: 300px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); transition: all 0.3s ease;" onmouseover="this.style.borderColor='#3b82f6'; this.style.transform='translateY(-5px)';" onmouseout="this.style.borderColor='#27272a'; this.style.transform='translateY(0)';">
+                    <img src="mupicture.jpg" alt="Prakash Kumar Daram" class="img-fluid"
+                        style="border: 5px solid #27272a; border-radius: 15px 100px; max-width: 300px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); transition: all 0.3s ease;"
+                        onmouseover="this.style.borderColor='#3b82f6'; this.style.transform='translateY(-5px)';"
+                        onmouseout="this.style.borderColor='#27272a'; this.style.transform='translateY(0)';">
                 </div>
             </div>
         </div>
@@ -470,36 +163,41 @@
         <div class="container">
             <div class="section-header text-center">
                 <h2 class="section-title">What Makes Me Different</h2>
-                <p class="section-subtitle mx-auto">I don't just build CRUD apps. I engineer real-world systems that handle complex workflows, asynchronous operations, and AI intelligence.</p>
+                <p class="section-subtitle mx-auto">I don't just build CRUD apps. I engineer real-world systems that
+                    handle complex workflows, asynchronous operations, and AI intelligence.</p>
             </div>
-            
+
             <div class="row g-4">
                 <div class="col-md-6 col-lg-3">
                     <div class="glass-card">
                         <i class="fas fa-network-wired diff-icon"></i>
                         <h4>Real-World Systems</h4>
-                        <p class="text-secondary">Experience building multi-role architectures serving different operational hierarchies within the same data ecosystem.</p>
+                        <p class="text-secondary">Experience building multi-role architectures serving different
+                            operational hierarchies within the same data ecosystem.</p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
                     <div class="glass-card">
                         <i class="fas fa-history diff-icon"></i>
                         <h4>Async Processing</h4>
-                        <p class="text-secondary">Expertise in Celery & Redis to offload heavy OCR workloads and LLM calls, ensuring the API server remains fast and responsive.</p>
+                        <p class="text-secondary">Expertise in Celery & Redis to offload heavy OCR workloads and LLM
+                            calls, ensuring the API server remains fast and responsive.</p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
                     <div class="glass-card">
                         <i class="fas fa-robot diff-icon"></i>
                         <h4>AI Integration</h4>
-                        <p class="text-secondary">Transforming raw text from documents into structured JSON datasets using prompt engineering and reliable LLM pipelines.</p>
+                        <p class="text-secondary">Transforming raw text from documents into structured JSON datasets
+                            using prompt engineering and reliable LLM pipelines.</p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
                     <div class="glass-card">
                         <i class="fas fa-layer-group diff-icon"></i>
                         <h4>E2E Ownership</h4>
-                        <p class="text-secondary">From database schema design and Django models to securing JWT endpoints and rendering the data in React dashboards.</p>
+                        <p class="text-secondary">From database schema design and Django models to securing JWT
+                            endpoints and rendering the data in React dashboards.</p>
                     </div>
                 </div>
             </div>
@@ -511,7 +209,8 @@
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Architecture Under The Hood</h2>
-                <p class="section-subtitle">How I design systems to decouple long-running AI tasks from fast API responses.</p>
+                <p class="section-subtitle">How I design systems to decouple long-running AI tasks from fast API
+                    responses.</p>
             </div>
 
             <div class="arch-diagram mb-4">
@@ -520,30 +219,30 @@
                         <i class="fab fa-react" style="color: #61dafb;"></i>
                         <span>React SPA</span>
                     </div>
-                    
+
                     <i class="fas fa-chevron-right arch-arrow"></i>
-                    
+
                     <div class="arch-node" style="border-color: #092e20;">
                         <i class="fab fa-python" style="color: #4b8bbe;"></i>
                         <span>Django API</span>
                     </div>
-                    
+
                     <i class="fas fa-chevron-right arch-arrow"></i>
-                    
+
                     <div class="arch-node" style="border-color: #c7254e;">
                         <i class="fas fa-layer-group" style="color: #c7254e;"></i>
                         <span>Redis Broker</span>
                     </div>
-                    
+
                     <i class="fas fa-chevron-right arch-arrow"></i>
-                    
+
                     <div class="arch-node" style="border-color: #37b14d;">
                         <i class="fas fa-cogs" style="color: #37b14d;"></i>
                         <span>Celery Worker</span>
                     </div>
-                    
+
                     <i class="fas fa-chevron-right arch-arrow"></i>
-                    
+
                     <div class="d-flex flex-column gap-3">
                         <div class="arch-node" style="border-color: #f34b22; width: 120px; padding: 1rem;">
                             <i class="fas fa-eye" style="color: #f34b22; font-size: 1.5rem;"></i>
@@ -556,11 +255,17 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="row">
                 <div class="col-lg-8">
                     <p class="text-secondary">
-                        <strong>The Pipeline:</strong> When a user uploads a financial document (e.g., a PDF bank statement), the Django API immediately returns a `job_id` so the UI isn't blocked. Redis queues the task. A Celery worker picks it up, runs it through PaddleOCR for text extraction, and then pushes the markdown to an LLM (OpenAI/Groq). The LLM parses the unstructured text into a structured JSON array of exact transactions. Finally, the worker fires a webhook callback to update the main database, and the React UI polls/receives the completed status to render the analysis dashboard.
+                        <strong>The Pipeline:</strong> When a user uploads a financial document (e.g., a PDF bank
+                        statement), the Django API immediately returns a `job_id` so the UI isn't blocked. Redis queues
+                        the task. A Celery worker picks it up, runs it through PaddleOCR for text extraction, and then
+                        pushes the markdown to an LLM (OpenAI/Groq). The LLM parses the unstructured text into a
+                        structured JSON array of exact transactions. Finally, the worker fires a webhook callback to
+                        update the main database, and the React UI polls/receives the completed status to render the
+                        analysis dashboard.
                     </p>
                 </div>
             </div>
@@ -577,36 +282,65 @@
 
             <!-- Project 1: AutoDoc Validator -->
             <div class="project-card">
-                <div class="project-header d-flex justify-content-between align-items-center flex-wrap gap-3">
-                    <div>
-                        <h3 class="mb-2">1. AI-Powered Document Intelligence Microservice (AutoDoc-Validator)</h3>
-                        <div class="d-flex flex-wrap">
-                            <span class="tech-badge">Python</span>
-                            <span class="tech-badge">Django DRF</span>
-                            <span class="tech-badge">Celery</span>
-                            <span class="tech-badge">Redis</span>
-                            <span class="tech-badge">PaddleOCR</span>
-                            <span class="tech-badge">LLM (OpenAI)</span>
+                <div class="project-header">
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <h3 class="mb-0">1. AI-Powered Document Intelligence Microservice (AutoDoc-Validator)</h3>
+                        <div class="d-flex align-items-center gap-2 ms-3 flex-shrink-0">
+                            <span class="btn btn-outline-secondary disabled px-2 py-1" style="opacity: 0.75; pointer-events: none; font-size:0.85rem;"
+                                data-bs-toggle="tooltip" data-bs-placement="top" title="Enterprise Project — Source code is confidential">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                            <button class="btn btn-custom px-2 py-1" style="font-size:0.85rem;" data-bs-toggle="modal" data-bs-target="#modalAutoDoc"
+                                data-bs-placement="top" title="View System Design Documentation">
+                                <i class="fas fa-book-open"></i>
+                            </button>
+                            <span class="px-2 py-1" style="font-size:0.85rem; cursor:default;"
+                                data-bs-toggle="tooltip" data-bs-placement="top"
+                                title="Developed at Viprata Software Services. Source code is private due to company NDA policies.">
+                                <i class="fas fa-exclamation-triangle text-danger"></i>
+                            </span>
                         </div>
                     </div>
-                    <a href="https://github.com/prakash-python" target="_blank" class="btn btn-outline-custom"><i class="fab fa-github me-2"></i>View Code</a>
+                    <div class="d-flex flex-wrap mb-3">
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">Django DRF</span>
+                        <span class="tech-badge">Celery</span>
+                        <span class="tech-badge">Redis</span>
+                        <span class="tech-badge">PaddleOCR</span>
+                        <span class="tech-badge">LLM (OpenAI)</span>
+                    </div>
+
                 </div>
                 <div class="project-content">
                     <div class="project-grid">
                         <div>
-                            <h5 class="text-primary-custom mb-3"><i class="fas fa-exclamation-circle text-warning me-2"></i>The Problem</h5>
-                            <p class="text-secondary mb-4">Manual verification of loan documents (bank statements, payslips) is an extremely slow, error-prone bottleneck delaying loan approvals. Rule-based parsers fail because every bank (SBI, HDFC, ICICI) formats statements differently.</p>
-                            
-                            <h5 class="text-primary-custom mb-3"><i class="fas fa-lightbulb text-success me-2"></i>The Solution</h5>
-                            <p class="text-secondary">I built a standalone microservice that asynchronously ingests documents, runs OCR, and utilizes Large Language Models to intelligently normalize transactions across *any* bank format into structured JSON, firing a webhook callback when complete.</p>
+                            <h5 class="text-primary-custom mb-3"><i
+                                    class="fas fa-exclamation-circle text-warning me-2"></i>The Problem</h5>
+                            <p class="text-secondary mb-4">Manual verification of loan documents (bank statements,
+                                payslips) is an extremely slow, error-prone bottleneck delaying loan approvals.
+                                Rule-based parsers fail because every bank (SBI, HDFC, ICICI) formats statements
+                                differently.</p>
+
+                            <h5 class="text-primary-custom mb-3"><i class="fas fa-lightbulb text-success me-2"></i>The
+                                Solution</h5>
+                            <p class="text-secondary">I built a standalone microservice that asynchronously ingests
+                                documents, runs OCR, and utilizes Large Language Models to intelligently normalize
+                                transactions across *any* bank format into structured JSON, firing a webhook callback
+                                when complete.</p>
                         </div>
                         <div>
                             <h5 class="mb-3">My Contributions & Features</h5>
                             <ul class="list-check">
-                                <li><strong>Async Pipeline:</strong> Engineered the Celery worker queue to prevent 1-2 minute OCR jobs from blocking API requests.</li>
-                                <li><strong>LLM Normalization:</strong> Integrated OpenAI to bypass complex regex parsing, achieving high accuracy in extracting transaction tables from unstructured OCR markdown.</li>
-                                <li><strong>Webhook Callback:</strong> Developed robust background delivery mechanism with exponential backoff retries to guarantee result delivery to the main LOS.</li>
-                                <li><strong>Concurrency Locks:</strong> Implemented PostgreSQL <code>select_for_update</code> locks to prevent duplicate Celery workers from racing on the same job.</li>
+                                <li><strong>Async Pipeline:</strong> Engineered the Celery worker queue to prevent 1-2
+                                    minute OCR jobs from blocking API requests.</li>
+                                <li><strong>LLM Normalization:</strong> Integrated OpenAI to bypass complex regex
+                                    parsing, achieving high accuracy in extracting transaction tables from unstructured
+                                    OCR markdown.</li>
+                                <li><strong>Webhook Callback:</strong> Developed robust background delivery mechanism
+                                    with exponential backoff retries to guarantee result delivery to the main LOS.</li>
+                                <li><strong>Concurrency Locks:</strong> Implemented PostgreSQL
+                                    <code>select_for_update</code> locks to prevent duplicate Celery workers from racing
+                                    on the same job.</li>
                             </ul>
                         </div>
                     </div>
@@ -615,80 +349,71 @@
 
             <!-- Project 2: Insta EMI Backend -->
             <div class="project-card">
-                <div class="project-header d-flex justify-content-between align-items-center flex-wrap gap-3">
-                    <div>
-                        <h3 class="mb-2">2. Insta EMI Core Backend (Loan Origination System)</h3>
-                        <div class="d-flex flex-wrap">
-                            <span class="tech-badge">Django</span>
-                            <span class="tech-badge">PostgreSQL</span>
-                            <span class="tech-badge">Celery</span>
-                            <span class="tech-badge">JWT</span>
-                            <span class="tech-badge">AES-256 Encryption</span>
-                            <span class="tech-badge">Groq API</span>
+                <div class="project-header">
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <h3 class="mb-0">2. Insta EMI Core Backend (Loan Origination System)</h3>
+                        <div class="d-flex align-items-center gap-2 ms-3 flex-shrink-0">
+                            <span class="btn btn-outline-secondary disabled px-2 py-1" style="opacity: 0.75; pointer-events: none; font-size:0.85rem;"
+                                data-bs-toggle="tooltip" data-bs-placement="top" title="Enterprise Project — Source code is confidential">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                            <button class="btn btn-custom px-2 py-1" style="font-size:0.85rem;" data-bs-toggle="modal" data-bs-target="#modalInstaBackend"
+                                data-bs-placement="top" title="View System Design Documentation">
+                                <i class="fas fa-book-open"></i>
+                            </button>
+                            <span class="px-2 py-1" style="font-size:0.85rem; cursor:default;"
+                                data-bs-toggle="tooltip" data-bs-placement="top"
+                                title="Developed at Viprata Software Services. Source code is private due to company NDA policies.">
+                                <i class="fas fa-exclamation-triangle text-danger"></i>
+                            </span>
                         </div>
                     </div>
-                    <a href="https://github.com/prakash-python" target="_blank" class="btn btn-outline-custom"><i class="fab fa-github me-2"></i>View Code</a>
+                    <div class="d-flex flex-wrap mb-3">
+                        <span class="tech-badge">Django</span>
+                        <span class="tech-badge">PostgreSQL</span>
+                        <span class="tech-badge">Celery</span>
+                        <span class="tech-badge">JWT</span>
+                        <span class="tech-badge">AES-256 Encryption</span>
+                        <span class="tech-badge">Groq API</span>
+                    </div>
+                    <!-- <p class="text-secondary mb-0" style="font-size: 0.82rem; line-height: 1.4;">
+                        <i class="fas fa-exclamation-triangle text-danger me-1"
+                            data-bs-toggle="tooltip" data-bs-placement="top"
+                            title="Source code is not publicly available due to company NDA policies"></i>
+                        This project was developed as part of my role at Viprata Software Services. Source code is private due to company policies.
+                    </p> -->
                 </div>
                 <div class="project-content">
                     <div class="project-grid">
                         <div>
-                            <h5 class="text-primary-custom mb-3"><i class="fas fa-exclamation-circle text-warning me-2"></i>The Problem</h5>
-                            <p class="text-secondary mb-4">Lending involves 9 different employee roles (sales, verification, credit). A monolithic database schema without strict boundaries leads to data leaks. Financial data (PAN, Income) must be encrypted at rest per compliance.</p>
-                            
-                            <h5 class="text-primary-custom mb-3"><i class="fas fa-lightbulb text-success me-2"></i>The Solution</h5>
-                            <p class="text-secondary">A highly modular Django REST API comprising 14 apps, segregating namespaces by role. Leveraged JWT claims for stateless role verification, and PyCryptodome for transparent field-level AES encryption.</p>
+                            <h5 class="text-primary-custom mb-3"><i
+                                    class="fas fa-exclamation-circle text-warning me-2"></i>The Problem</h5>
+                            <p class="text-secondary mb-4">Lending involves 9 different employee roles (sales,
+                                verification, credit). A monolithic database schema without strict boundaries leads to
+                                data leaks. Financial data (PAN, Income) must be encrypted at rest per compliance.</p>
+
+                            <h5 class="text-primary-custom mb-3"><i class="fas fa-lightbulb text-success me-2"></i>The
+                                Solution</h5>
+                            <p class="text-secondary">A highly modular Django REST API comprising 14 apps, segregating
+                                namespaces by role. Leveraged JWT claims for stateless role verification, and
+                                PyCryptodome for transparent field-level AES encryption.</p>
                         </div>
                         <div>
                             <h5 class="mb-3">My Contributions & Features</h5>
                             <ul class="list-check">
-                                <li><strong>9-Tier Role Architecture:</strong> Enforced rigorous data isolation so a Process Associate and a Regional Sales Manager access entirely different views of the same application.</li>
-                                <li><strong>Data Security:</strong> Implemented transparent AES-256 encryption on Django model fields safeguarding PAN, Aadhaar, and income figures.</li>
-                                <li><strong>Integrations:</strong> Built API boundaries to connect with live CIBIL bureau APIs, AWS/Azure Blob storage, and the standalone AuthDoc Validator service.</li>
-                                <li><strong>Fuzzy Matching:</strong> Used FuzzyWuzzy for intelligent matching of entered company names against the employer master list.</li>
+                                <li><strong>9-Tier Role Architecture:</strong> Enforced rigorous data isolation so a
+                                    Process Associate and a Regional Sales Manager access entirely different views of
+                                    the same application.</li>
+                                <li><strong>Data Security:</strong> Implemented transparent AES-256 encryption on Django
+                                    model fields safeguarding PAN, Aadhaar, and income figures.</li>
+                                <li><strong>Integrations:</strong> Built API boundaries to connect with live CIBIL
+                                    bureau APIs, AWS/Azure Blob storage, and the standalone AuthDoc Validator service.
+                                </li>
+                                <li><strong>Fuzzy Matching:</strong> Used FuzzyWuzzy for intelligent matching of entered
+                                    company names against the employer master list.</li>
                             </ul>
                         </div>
                     </div>
-                </div>
-            </div>
-
-            <!-- Project 3: Insta EMI Frontend -->
-            <div class="project-card">
-                <div class="project-header d-flex justify-content-between align-items-center flex-wrap gap-3">
-                    <div>
-                        <h3 class="mb-2">3. Insta EMI Multi-Role Dashboard</h3>
-                        <div class="d-flex flex-wrap">
-                            <span class="tech-badge">React 19</span>
-                            <span class="tech-badge">Vite</span>
-                            <span class="tech-badge">Tailwind CSS</span>
-                            <span class="tech-badge">React Query</span>
-                            <span class="tech-badge">pdfjs</span>
-                            <span class="tech-badge">ApexCharts</span>
-                        </div>
-                    </div>
-                    <a href="https://github.com/prakash-python" target="_blank" class="btn btn-outline-custom"><i class="fab fa-github me-2"></i>View Code</a>
-                </div>
-                <div class="project-content">
-                    <div class="project-grid">
-                        <div>
-                            <h5 class="text-primary-custom mb-3"><i class="fas fa-exclamation-circle text-warning me-2"></i>The Problem</h5>
-                            <p class="text-secondary mb-4">Building a single React SPA that manages a public marketplace and 100+ protected routes across 9 completely different internal operational dashboards without shipping an enormous, slow bundle.</p>
-                            
-                            <h5 class="text-primary-custom mb-3"><i class="fas fa-lightbulb text-success me-2"></i>The Solution</h5>
-                            <p class="text-secondary">A centralized routing structure using React Router v7 and custom ProtectedRoute wrappers linked to JWT context. Optimized server-state using TanStack React Query for aggressive caching and background fetching.</p>
-                        </div>
-                        <div>
-                            <h5 class="mb-3">My Contributions & Features</h5>
-                            <ul class="list-check">
-                                <li><strong>Centralized Route Guards:</strong> Managed JWT authorization so unauthorized roles never render protected components or trigger data fetches.</li>
-                                <li><strong>In-Browser PDF Verification:</strong> Integrated <code>pdfjs</code> to allow Process Associates to visually inspect huge document payloads directly in the browser side-by-side with OCR results.</li>
-                                <li><strong>Multi-Step Form Persistence:</strong> Handled complex 5-step loan applications using Formik, storing intermediate state and handling large document uploads cleanly.</li>
-                                <li><strong>Data Visualization:</strong> Built performance KPI trees for National and Zonal sales managers using ApexCharts to track volume.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
                 </div>
             </div>
 
@@ -696,31 +421,37 @@
             <h4 class="mt-5 mb-4 text-center">Other Featured Projects</h4>
             <div class="row g-4 justify-content-center">
                 <div class="col-md-4 col-lg-3">
-                    <a href="https://python-veg-inventory.onrender.com/" target="_blank" class="glass-card d-block text-center text-decoration-none p-3 h-100">
+                    <a href="https://python-veg-inventory.onrender.com/" target="_blank"
+                        class="glass-card d-block text-center text-decoration-none p-3 h-100">
                         <i class="fas fa-leaf mb-2 text-success" style="font-size: 2rem;"></i>
                         <h6 class="mb-1 text-primary-custom" style="color: var(--text-primary);">Veg Mart Inventory</h6>
                     </a>
                 </div>
                 <div class="col-md-4 col-lg-3">
-                    <a href="https://github.com/prakash-python/python_mysql_bank_project" target="_blank" class="glass-card d-block text-center text-decoration-none p-3 h-100">
+                    <a href="https://github.com/prakash-python/python_mysql_bank_project" target="_blank"
+                        class="glass-card d-block text-center text-decoration-none p-3 h-100">
                         <i class="fas fa-university mb-2 text-primary" style="font-size: 2rem;"></i>
                         <h6 class="mb-1 text-primary-custom" style="color: var(--text-primary);">Bank Management</h6>
                     </a>
                 </div>
                 <div class="col-md-4 col-lg-3">
-                    <a href="https://github.com/prakash-python/Mail_Sending_System" target="_blank" class="glass-card d-block text-center text-decoration-none p-3 h-100">
+                    <a href="https://github.com/prakash-python/Mail_Sending_System" target="_blank"
+                        class="glass-card d-block text-center text-decoration-none p-3 h-100">
                         <i class="fas fa-envelope mb-2 text-warning" style="font-size: 2rem;"></i>
-                        <h6 class="mb-1 text-primary-custom" style="color: var(--text-primary);">Mail Sending System</h6>
+                        <h6 class="mb-1 text-primary-custom" style="color: var(--text-primary);">Mail Sending System
+                        </h6>
                     </a>
                 </div>
                 <div class="col-md-4 col-lg-3">
-                    <a href="https://github.com/prakash-python/My_Simple_Calculater" target="_blank" class="glass-card d-block text-center text-decoration-none p-3 h-100">
+                    <a href="https://github.com/prakash-python/My_Simple_Calculater" target="_blank"
+                        class="glass-card d-block text-center text-decoration-none p-3 h-100">
                         <i class="fas fa-calculator mb-2 text-info" style="font-size: 2rem;"></i>
                         <h6 class="mb-1 text-primary-custom" style="color: var(--text-primary);">Simple Calculator</h6>
                     </a>
                 </div>
                 <div class="col-md-4 col-lg-3">
-                    <a href="https://prakashkumarpython.pythonanywhere.com/" target="_blank" class="glass-card d-block text-center text-decoration-none p-3 h-100">
+                    <a href="https://prakashkumarpython.pythonanywhere.com/" target="_blank"
+                        class="glass-card d-block text-center text-decoration-none p-3 h-100">
                         <i class="fas fa-address-card mb-2 text-secondary" style="font-size: 2rem;"></i>
                         <h6 class="mb-1 text-primary-custom" style="color: var(--text-primary);">Old Portfolio</h6>
                     </a>
@@ -839,47 +570,55 @@
                         <div class="exp-item">
                             <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap">
                                 <h4 class="mb-0">Backend Software Engineer</h4>
-                                <span class="badge text-bg-light" style="background: #e2e8f0 !important; color: #0f172a !important;">Apr 2025 - Present</span>
+                                <span class="badge text-bg-light"
+                                    style="background: #e2e8f0 !important; color: #0f172a !important;">Apr 2025 -
+                                    Present</span>
                             </div>
                             <h5 class="text-gradient">Viprata Software Services Pvt Ltd</h5>
                             <ul class="list-check mt-3 text-secondary">
-                                <li>Designed and developed scalable backend Django REST architectures for financial platforms.</li>
+                                <li>Designed and developed scalable backend Django REST architectures for financial
+                                    platforms.</li>
                                 <li>Integrated CIBIL APIs, implemented JWT auth, and built secure workflows.</li>
                                 <li>Engineered a dynamic offer-matching decision engine based on rule parsing.</li>
                                 <li>Built large-scale Pandas data pipelines moving 2.3M+ relational records.</li>
                             </ul>
                         </div>
-                        
-                         <div class="exp-item">
+
+                        <div class="exp-item">
                             <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap">
                                 <h4 class="mb-0">Junior Python Developer</h4>
                                 <span class="text-secondary" style="font-size: 0.9em;">Nov 2024 - Apr 2025</span>
                             </div>
-                            <h5 class="text-primary-custom" style="color: var(--text-primary);">V V Cube Consultancy Services</h5>
+                            <h5 class="text-primary-custom" style="color: var(--text-primary);">V V Cube Consultancy
+                                Services</h5>
                             <ul class="list-check mt-3 text-secondary">
                                 <li>Mentored students in Python, Django, MySQL, and Full-Stack development.</li>
-                                <li>Developed internal automation tools for student reporting & email notifications.</li>
-                                <li>Supported backend debugging, API logic design and database workflow optimization.</li>
+                                <li>Developed internal automation tools for student reporting & email notifications.
+                                </li>
+                                <li>Supported backend debugging, API logic design and database workflow optimization.
+                                </li>
                             </ul>
                         </div>
 
-                         <div class="exp-item">
+                        <div class="exp-item">
                             <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap">
                                 <h4 class="mb-0">Sales Associate</h4>
                                 <span class="text-secondary" style="font-size: 0.9em;">Oct 2023 - Jan 2025</span>
                             </div>
                             <h5 class="text-primary-custom" style="color: var(--text-primary);">DMart</h5>
                             <ul class="list-check mt-3 text-secondary">
-                                <li>Awarded Best Employee in 2024 for outstanding performance in stock and inventory management.</li>
+                                <li>Awarded Best Employee in 2024 for outstanding performance in stock and inventory
+                                    management.</li>
                             </ul>
                         </div>
 
-                         <div class="exp-item border-0 pb-0">
+                        <div class="exp-item border-0 pb-0">
                             <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap">
                                 <h4 class="mb-0">UI Development Intern</h4>
                                 <span class="text-secondary" style="font-size: 0.9em;">Apr 2023 - Jul 2023</span>
                             </div>
-                            <h5 class="text-primary-custom" style="color: var(--text-primary);">REDCARPET Animation Visual FX</h5>
+                            <h5 class="text-primary-custom" style="color: var(--text-primary);">REDCARPET Animation
+                                Visual FX</h5>
                             <p class="text-secondary mt-2 mb-0">
                                 Built static web pages using HTML, CSS, JavaScript, and ReactJS.
                             </p>
@@ -893,17 +632,21 @@
                         <div class="exp-item">
                             <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap">
                                 <h4 class="mb-0">Master's Of Computer Applications</h4>
-                                <span class="badge text-bg-light" style="background: #e2e8f0 !important; color: #0f172a !important;">2025 • 81%</span>
+                                <span class="badge text-bg-light"
+                                    style="background: #e2e8f0 !important; color: #0f172a !important;">2025 • 81%</span>
                             </div>
-                            <h5 class="text-primary-custom" style="color: var(--text-primary);">Pedanandipadu College of Arts & Sciences</h5>
+                            <h5 class="text-primary-custom" style="color: var(--text-primary);">Pedanandipadu College of
+                                Arts & Sciences</h5>
                         </div>
 
                         <div class="exp-item border-0 pb-0">
                             <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap">
                                 <h4 class="mb-0">B.Sc. in Statistics and Computer Science</h4>
-                                <span class="badge text-bg-light" style="background: #e2e8f0 !important; color: #0f172a !important;">2023 • 81%</span>
+                                <span class="badge text-bg-light"
+                                    style="background: #e2e8f0 !important; color: #0f172a !important;">2023 • 81%</span>
                             </div>
-                            <h5 class="text-primary-custom" style="color: var(--text-primary);">Jagarlamudi Kuppuswamy Choudary College</h5>
+                            <h5 class="text-primary-custom" style="color: var(--text-primary);">Jagarlamudi Kuppuswamy
+                                Choudary College</h5>
                         </div>
                     </div>
                 </div>
@@ -916,7 +659,8 @@
         <div class="container">
             <div class="section-header text-center">
                 <h2 class="section-title">Let's Connect</h2>
-                <p class="section-subtitle mx-auto">Currently open to new opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you!</p>
+                <p class="section-subtitle mx-auto">Currently open to new opportunities. Whether you have a question or
+                    just want to say hi, I'll try my best to get back to you!</p>
             </div>
 
             <div class="row justify-content-center g-4 max-w-4xl mx-auto" style="max-width: 800px;">
@@ -924,18 +668,21 @@
                     <a href="mailto:daramprakashkumar587@gmail.com" class="contact-item flex-column text-center">
                         <i class="fas fa-envelope contact-icon mb-3 text-center"></i>
                         <h5 class="mb-1">Email</h5>
-                        <span class="text-secondary" style="font-size: 0.85rem">daramprakashkumar587<br>@gmail.com</span>
+                        <span class="text-secondary"
+                            style="font-size: 0.85rem">daramprakashkumar587<br>@gmail.com</span>
                     </a>
                 </div>
                 <div class="col-md-4">
-                    <a href="https://www.linkedin.com/in/prakash-kumar-daram-891191298/" target="_blank" class="contact-item flex-column text-center">
+                    <a href="https://www.linkedin.com/in/prakash-kumar-daram-891191298/" target="_blank"
+                        class="contact-item flex-column text-center">
                         <i class="fab fa-linkedin contact-icon mb-3 text-center"></i>
                         <h5 class="mb-1">LinkedIn</h5>
                         <span class="text-secondary" style="font-size: 0.85rem">Connect professionally</span>
                     </a>
                 </div>
                 <div class="col-md-4">
-                    <a href="https://github.com/prakash-python" target="_blank" class="contact-item flex-column text-center">
+                    <a href="https://github.com/prakash-python" target="_blank"
+                        class="contact-item flex-column text-center">
                         <i class="fab fa-github contact-icon mb-3 text-center"></i>
                         <h5 class="mb-1">GitHub</h5>
                         <span class="text-secondary" style="font-size: 0.85rem">View my code</span>
@@ -959,52 +706,74 @@
         </div>
     </section>
 
+
+    <!-- ============================================== -->
+    <!-- BEAUTIFUL DOCUMENTATION MODALS -->
+    <!-- ============================================== -->
+    <!-- Modal: AutoDoc-Validator -->
+    <div class="modal fade" id="modalAutoDoc" tabindex="-1" aria-labelledby="modalAutoDocLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-scrollable">
+            <div class="modal-content"
+                style="background-color: var(--bg-color); border: 1px solid var(--border-color);">
+                <div class="modal-header border-bottom border-dark"
+                    style="background: linear-gradient(90deg, #18181b 0%, #09090b 100%);">
+                    <h5 class="modal-title fw-bold text-white fs-4" id="modalAutoDocLabel"><i
+                            class="fas fa-file-alt text-primary me-2"></i>System Design: AutoDoc-Validator Microservice
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <!-- Document Body -->
+                <div class="modal-body p-0" id="bodyAutoDoc"
+                    style="background-color: #f8fafc; min-height: 400px; position: relative;"></div>
+                <!-- Modal Footer -->
+                <div class="modal-footer"
+                    style="background-color: var(--bg-surface); border-top: 1px solid var(--border-color);">
+                    <button type="button" class="btn btn-primary-custom" data-bs-dismiss="modal">Close
+                        Documentation</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Insta EMI Backend -->
+    <div class="modal fade" id="modalInstaBackend" tabindex="-1" aria-labelledby="modalInstaBackendLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-scrollable">
+            <div class="modal-content"
+                style="background-color: var(--bg-color); border: 1px solid var(--border-color);">
+                <div class="modal-header border-bottom border-dark"
+                    style="background: linear-gradient(90deg, #18181b 0%, #09090b 100%);">
+                    <h5 class="modal-title fw-bold text-white fs-4" id="modalInstaBackendLabel"><i
+                            class="fas fa-server text-success me-2"></i>System Design: Insta EMI Core Backend</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <!-- Document Body -->
+                <div class="modal-body p-0" id="bodyInstaBackend"
+                    style="background-color: #f8fafc; min-height: 400px; position: relative;"></div>
+                <!-- Modal Footer -->
+                <div class="modal-footer"
+                    style="background-color: var(--bg-surface); border-top: 1px solid var(--border-color);">
+                    <button type="button" class="btn btn-primary-custom" data-bs-dismiss="modal">Close
+                        Documentation</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
     <footer class="py-4 border-top" style="border-color: var(--border-color) !important;">
         <div class="container text-center">
-            <p class="text-secondary mb-0 text-mono">Built with <i class="fas fa-heart text-danger"></i> by Prakash Kumar Daram &copy; 2024</p>
+            <p class="text-secondary mb-0 text-mono">Built with <i class="fas fa-heart text-danger"></i> by Prakash
+                Kumar Daram &copy; 2024</p>
         </div>
     </footer>
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        // WhatsApp Integration
-        function openWhatsApp() {
-            const phoneNumber = "916302581405"; 
-            const defaultMessage = "Hello Prakash, I came across your portfolio and wanted to connect with you about an engineering role.";
-            const encodedMessage = encodeURIComponent(defaultMessage);
-            window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
-        }
-
-        // Add scrolled class to navbar
-        window.addEventListener('scroll', () => {
-            const navbar = document.querySelector('.navbar-custom');
-            if (window.scrollY > 50) {
-                navbar.style.background = 'rgba(9, 9, 11, 0.95)';
-                navbar.style.borderBottom = '1px solid rgba(255, 255, 255, 0.1)';
-            } else {
-                navbar.style.background = 'rgba(9, 9, 11, 0.8)';
-                navbar.style.borderBottom = '1px solid var(--border-color)';
-            }
-        });
-
-        // Smooth scroll function and prevent hash appending in URL
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    const navbarHeight = document.querySelector('.navbar-custom').offsetHeight;
-                    const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - navbarHeight - 20; // 20px padding offset
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-    </script>
+    <script src="assets/js/scripts.js"></script>
 </body>
+
 </html>

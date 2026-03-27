@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoDoc-Validator Documentation</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #ffffff;
+            color: #334155;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.8;
+            padding: 3rem 4rem;
+        }
+        h1, h2, h3 { color: #0f172a; margin-top: 2rem; margin-bottom: 1rem; font-weight: 700; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.5rem; }
+        h1 { font-size: 2.2rem; letter-spacing: -0.03em; border-bottom: none; margin-bottom: 0; }
+        h2 { font-size: 1.6rem; color: #1e293b; margin-top: 3rem; }
+        h3 { font-size: 1.3rem; border-bottom: none; color: #334155; }
+        pre { background-color: #0f172a; color: #f8fafc; padding: 1.5rem; border-radius: 8px; overflow-x: auto; margin-bottom: 1.5rem; font-size: 0.9em; border: 1px solid #1e293b; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); }
+        code { font-family: 'JetBrains Mono', monospace; font-size: 0.9em; background-color: #f1f5f9; padding: 0.2rem 0.4rem; border-radius: 4px; color: #ef4444; }
+        pre code { background-color: transparent; padding: 0; color: inherit; border-radius: 0; }
+        ul, ol { margin-bottom: 1.5rem; padding-left: 1.5rem; }
+        li { margin-bottom: 0.5rem; line-height: 1.7; }
+        p { margin-bottom: 1.25rem; font-size: 1.05rem; }
+        hr { margin: 2.5rem 0; border-color: #e2e8f0; opacity: 1; }
+        blockquote { border-left: 4px solid #3b82f6; padding-left: 1.5rem; color: #475569; font-style: italic; background: #f8fafc; padding: 1.5rem; border-radius: 0 8px 8px 0; font-size: 1.1rem; margin: 2rem 0; line-height: 1.6; border-right: 1px solid #e2e8f0; border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0; }
+        
+        @media (max-width: 768px) {
+            body { padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <div style="max-width: 900px; margin: 0 auto;">
+<h1>AutoDoc-Validator</h1>
+
+<blockquote>
+<p><strong>AI-Powered Document Intelligence Microservice</strong> — A production-grade system designed to extract, validate, and structure financial documents at scale using OCR and Large Language Models.</p>
+</blockquote>
+
+<hr>
+
+<h2>🚨 Problem Statement</h2>
+
+<p>
+In traditional loan processing systems, document verification is one of the biggest bottlenecks. 
+Loan officers manually verify identity documents, bank statements, and income proofs, which leads to:
+</p>
+
+<ul>
+<li>High processing time (hours to days)</li>
+<li>Human errors and inconsistencies</li>
+<li>Difficulty handling multiple document formats</li>
+<li>High operational cost</li>
+</ul>
+
+<p>
+Additionally, bank statements from different banks (HDFC, SBI, ICICI, etc.) follow completely different formats, 
+making rule-based parsing extremely unreliable.
+</p>
+
+<hr>
+
+<h2>💡 Solution Overview</h2>
+
+<p>
+AutoDoc-Validator solves this problem by introducing a fully automated, AI-powered document processing pipeline:
+</p>
+
+<ul>
+<li>Extracts text using OCR</li>
+<li>Transforms unstructured data into structured JSON using LLM</li>
+<li>Applies validation rules dynamically</li>
+<li>Processes documents asynchronously using Celery</li>
+<li>Returns results via webhook callbacks</li>
+</ul>
+
+<p>
+The system is built as an independent microservice to handle heavy workloads efficiently.
+</p>
+
+<hr>
+
+<h2>🏗️ System Architecture</h2>
+
+<pre>
+User Upload
+    ↓
+React Frontend
+    ↓
+Django Backend API
+    ↓
+Redis Queue
+    ↓
+Celery Workers
+    ↓
+OCR Engine (PaddleOCR)
+    ↓
+LLM Processing (OpenAI)
+    ↓
+Structured Data Output
+    ↓
+Webhook Callback
+</pre>
+
+<p>
+This architecture ensures:
+</p>
+
+<ul>
+<li>Non-blocking API responses</li>
+<li>Scalable processing</li>
+<li>Separation of concerns</li>
+</ul>
+
+<hr>
+
+
+<h3>Ecosystem Position</h3>
+<pre><code>┌─────────────────────────────────────────────────────────┐
+│                  Insta-EMI Ecosystem                     │
+│                                                          │
+│  ┌──────────────────┐       API Call (POST)              │
+│  │  Insta-Emi-React  │ ──────────────────────────────►  │
+│  │  (React Frontend) │       ▼                          │
+│  └──────────────────┘  ┌──────────────────┐            │
+│                         │ Insta-Emi-Server  │            │
+│                         │ (Django REST API) │            │
+│                         └────────┬─────────┘            │
+│                                  │ Microservice Call     │
+│                                  ▼                       │
+│                    ┌─────────────────────────┐           │
+│                    │   AutoDoc-Validator      │ ◄── YOU  │
+│                    │   (This Microservice)    │          │
+│                    │                          │          │
+│                    │  OCR → AI → Validation   │          │
+│                    │  → Webhook Callback       │          │
+│                    └─────────────────────────┘           │
+└─────────────────────────────────────────────────────────┘
+</code></pre>
+
+<h3>Document Processing Pipeline</h3>
+<pre><code>[Document URL Received]
+         │
+         ▼
+┌─────────────────────┐
+│  Celery Task Queue  │  ← Job dispatched with priority
+└────────┬────────────┘
+         │
+         ▼
+┌─────────────────────┐
+│  OCR Engine          │  ← PaddleOCR processes PDF/image
+└────────┬────────────┘
+         │
+         ├──── Bank Statement? ───────────────────────────┐
+         │                                                 │
+         ▼                                                 ▼
+┌────────────────────┐                     ┌──────────────────────────┐
+│ Mark COMPLETED     │                     │ Transaction Extraction    │
+│ (Payslips, PAN,    │                     │ Service (OpenAI LLM)      │
+│  Aadhaar, etc.)    │                     │                           │
+└────────────────────┘                     │ Parses OCR → JSON         │
+                                           └──────────┬───────────────┘
+                                                      │
+                                                      ▼
+                                           ┌──────────────────────────┐
+                                           │  Webhook Callback         │
+                                           │  POST → Insta-Emi-Server  │
+                                           └──────────────────────────┘
+</code></pre>
+
+<h2>🏗️ Detailed Architecture Layers</h2>
+
+<h3>1. Presentation Layer</h3>
+<p>
+The React frontend allows users to upload documents and track processing status.
+</p>
+
+<h3>2. API Layer</h3>
+<p>
+The Django backend handles:
+</p>
+<ul>
+<li>Request validation</li>
+<li>Job creation</li>
+<li>Communication with AutoDoc service</li>
+</ul>
+
+<h3>3. Queue Layer</h3>
+<p>
+Redis acts as a message broker for Celery, ensuring reliable task execution.
+</p>
+
+<h3>4. Processing Layer</h3>
+<p>
+Celery workers handle:
+</p>
+<ul>
+<li>OCR extraction</li>
+<li>AI processing</li>
+<li>Validation logic</li>
+</ul>
+
+<h3>5. AI Layer</h3>
+<p>
+LLMs are used to convert unstructured OCR text into structured JSON.
+</p>
+
+<h3>6. Integration Layer</h3>
+<p>
+Webhook callbacks send results back to the main backend.
+</p>
+
+<hr>
+
+<h2>⚙️ Processing Pipeline</h2>
+
+<pre>
+Document Received
+      ↓
+Queued in Redis
+      ↓
+Celery Worker Picks Task
+      ↓
+OCR Extracts Text
+      ↓
+LLM Processes Data
+      ↓
+Validation Applied
+      ↓
+Result Stored
+      ↓
+Callback Sent
+</pre>
+
+<hr>
+
+<h2>🔁 Async Task Flow</h2>
+
+<pre>
+API Request
+   ↓
+Create Job (QUEUED)
+   ↓
+Celery Task Triggered
+   ↓
+PROCESSING
+   ↓
+OCR Completed
+   ↓
+AI Processing Completed
+   ↓
+Final Result Stored
+   ↓
+Callback Sent
+</pre>
+
+<hr>
+
+<h2>⚙️ Key Engineering Decisions</h2>
+
+<ul>
+<li><strong>Microservice Architecture:</strong> Separates heavy workloads from main backend</li>
+<li><strong>Celery + Redis:</strong> Enables asynchronous processing</li>
+<li><strong>PaddleOCR:</strong> High accuracy for Indian documents</li>
+<li><strong>LLM Integration:</strong> Handles multiple formats effectively</li>
+<li><strong>Webhook Pattern:</strong> Eliminates polling</li>
+<li><strong>Database Locking:</strong> Prevents duplicate processing</li>
+</ul>
+
+<hr>
+
+<h2>🚀 Key Features</h2>
+
+<ul>
+<li>Asynchronous document processing</li>
+<li>AI-based structured data extraction</li>
+<li>Supports multiple document types</li>
+<li>Real-time webhook updates</li>
+<li>Scalable architecture</li>
+<li>Error handling and retries</li>
+</ul>
+
+<hr>
+
+<h2>⚡ Challenges & Solutions</h2>
+
+<h3>Handling Multiple Bank Formats</h3>
+<p>
+Solved using LLM instead of rule-based parsing.
+</p>
+
+<h3>Long Processing Time</h3>
+<p>
+Handled using Celery async processing.
+</p>
+
+<h3>Concurrency Issues</h3>
+<p>
+Solved using database-level locking.
+</p>
+
+<h3>Callback Failures</h3>
+<p>
+Implemented retry mechanism.
+</p>
+
+<hr>
+
+<h2>📈 System Scalability</h2>
+
+<ul>
+<li>Horizontal scaling using multiple Celery workers</li>
+<li>Independent microservice deployment</li>
+<li>Queue-based load distribution</li>
+</ul>
+
+<hr>
+
+<h2>🧠 System Strength</h2>
+
+<ul>
+<li>Handles real-world financial documents</li>
+<li>Combines AI + backend + async systems</li>
+<li>Production-ready architecture</li>
+<li>High performance and reliability</li>
+</ul>
+
+<hr>
+
+<h2>🚀 Future Enhancements</h2>
+
+<ul>
+<li>GPU-based OCR acceleration</li>
+<li>Real-time streaming results</li>
+<li>Multi-language document support</li>
+<li>Fraud detection using ML</li>
+<li>Kubernetes deployment</li>
+</ul>
+    </div>
+</body>
+</html>
