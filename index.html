@@ -3,674 +3,1008 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Port Folio</title>
+    <title>Prakash Kumar Daram - Backend Engineer | AI-Powered Systems</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Animate.css for subtle enter animations -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    
     <style>
+        :root {
+            --bg-color: #09090b;
+            --bg-surface: #18181b;
+            --bg-surface-hover: #27272a;
+            --text-primary: #f4f4f5;
+            --text-secondary: #a1a1aa;
+            --accent-primary: #3b82f6;
+            --accent-glow: rgba(59, 130, 246, 0.5);
+            --gradient-primary: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            --border-color: #27272a;
+            --font-main: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
         body {
-            background-color: black;
-            color: lightcyan;
-            background-image: url('https://img.freepik.com/free-vector/gradient-geometric-shapes-dark-background_52683-33027.jpg');
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-attachment: fixed;
-            padding-top: 60px;
-            padding-bottom: 60px;
-            transition: padding-top 0.3s ease;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: var(--font-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            letter-spacing: -0.02em;
         }
         
+        .text-gradient {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .text-mono {
+            font-family: var(--font-mono);
+            font-size: 0.9em;
+        }
+
+        /* Navbar */
         .navbar-custom {
-            background-color: rgba(0, 0, 0, 0.8) !important;
-            font-style: italic;
+            background: rgba(9, 9, 11, 0.8) !important;
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 0;
+            transition: all 0.3s ease;
         }
-        
-        .navbar-custom .navbar-brand {
-            color: white !important;
-            font-weight: bold;
-            padding-left: 15px;
+
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--text-primary) !important;
+            letter-spacing: -0.05em;
         }
-        
-        .navbar-custom .nav-link {
-            color: lightcyan;
-            transition: color 0.3s;
+
+        .nav-link {
+            color: var(--text-secondary) !important;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
             position: relative;
         }
-        
-        .navbar-custom .nav-link:hover {
-            color: lawngreen;
+
+        .nav-link:hover {
+            color: var(--text-primary) !important;
         }
-        
-        .content-section {
-            display: none;
-            padding-top: 20px;
-            font-style: oblique;
-            min-height: calc(93vh - 120px);
+
+        /* Buttons */
+        .btn-primary-custom {
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
-        
-        #home-content {
-            display: block;
-        }
-        
-        .profile-img {
-            border: 5px solid #f4f6f7;
-            border-radius: 15px 100px;
-            max-width: 250px;
-            height: auto;
-            transition: all 0.3s ease;
-        }
-        
-        .profile-img:hover {
-            border: 5px solid #2e4053;
-            box-shadow: 2px 3px;
-        }
-        
-        .contact-box {
-            background-color: #f5cba7;
-            color: black;
-            border: 3px solid #2e4053;
-            border-radius: 5px 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 15px;
-            transition: all 0.3s ease;
-        }
-        
-        .contact-box:hover {
-            background-color: black;
-            color: aliceblue !important;
-            border-radius: 50px;
-        }
-        
-        .contact-box a {
-            color: black;
-            text-decoration: none;
-        }
-        
-        .contact-box:hover a {
-            color: aliceblue !important;
-        }
-        
-        .s1 {
-            color: bisque;
-        }
-        
-        .skill-accordion {
-            margin-bottom: 16px;
-            border-radius: 24px;
-            overflow: hidden;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.10);
-            background: linear-gradient(135deg, #f5cba7 60%, #ffe5b4 100%);
-            transition: box-shadow 0.3s, background 0.3s;
-        }
-        
-        .skill-box {
-            background: linear-gradient(135deg, #f5cba7 60%, #ffe5b4 100%);
-            color: #222;
-            padding: 8px 12px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: background 0.3s, color 0.3s, box-shadow 0.3s;
-            text-align: center;
-            border-radius: 18px;
-            font-size: 1rem;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            min-width: 120px;
-            min-height: 36px;
-        }
-        
-        .skill-box:hover {
-            background: linear-gradient(135deg, #ca6f1e 60%, #f5cba7 100%);
-            color: #fff;
-            border-radius: 24px;
-            box-shadow: 0 6px 18px rgba(0,0,0,0.13);
-        }
-        
-        .skill-description {
-            background: rgba(0,0,0,0.85);
-            color: #fff;
-            text-align: center;
-            padding: 0 18px;
-            max-height: 0;
-            overflow: hidden;
-            border-radius: 0 0 24px 24px;
-            transition: max-height 0.4s cubic-bezier(.4,2,.6,1), padding 0.3s;
-        }
-        
-        .skill-accordion:hover .skill-description {
-            max-height: 300px;
-            padding: 18px;
-        }
-        
-        .project-link {
-            background-color: #f5cba7;
-            color: black;
-            border: 3px solid black;
-            border-radius: 2px 30px;
-            padding: 15px;
-            margin-bottom: 20px;
-            text-decoration: none;
-            display: block;
-            transition: all 0.3s ease;
-        }
-        
-        .project-link:hover {
-            background-color: #ca6f1e;
-            color: aliceblue;
-            border-radius: 50px;
-        }
-        
-        .footer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .footer-marquee {
-            background-color: rgba(0, 0, 0, 0.7);
+
+        .btn-primary-custom:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px var(--accent-glow);
             color: white;
         }
-        
-        .footer img {
-            vertical-align: middle;
+
+        .btn-outline-custom {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .btn-outline-custom:hover {
+            background: var(--bg-surface-hover);
+            border-color: var(--text-secondary);
+            color: white;
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .section-header {
+            margin-bottom: 3rem;
         }
         
-        .footer .d-inline-flex {
-            padding: 8px 0;
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 600px;
+        }
+
+        /* Cards */
+        .glass-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            height: 100%;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(59, 130, 246, 0.3);
+            background: linear-gradient(to bottom, #18181b, #1e1e24);
+        }
+
+        /* Badges */
+        .tech-badge {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: var(--text-secondary);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-family: var(--font-mono);
+            display: inline-block;
+            margin: 0.2rem;
+            transition: all 0.2s ease;
         }
         
-        .me-1 {
-            margin-right: 0.5rem;
+        .tech-badge:hover {
+            background: rgba(255,255,255,0.1);
+            color: var(--text-primary);
         }
-        
-        .me-2 {
+
+        /* Hero Section */
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .hero-summary {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .hero-list {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-list li {
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-list i {
+            color: var(--accent-primary);
             margin-right: 1rem;
         }
-        
-        .me-4 {
-            margin-right: 2rem;
+
+        /* What Makes Me Different */
+        .diff-icon {
+            font-size: 2rem;
+            color: var(--accent-primary);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Experience Pipeline */
+        .exp-item {
+            border-left: 2px solid var(--border-color);
+            padding-left: 2rem;
+            padding-bottom: 3rem;
+            position: relative;
+        }
+
+        .exp-item::before {
+            content: '';
+            position: absolute;
+            left: -9px;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--bg-color);
+            border: 2px solid var(--accent-primary);
+        }
+
+        .exp-item:last-child {
+            padding-bottom: 0;
+            border-left-color: transparent;
+        }
+
+        /* Architecture Section */
+        .arch-diagram {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 3rem;
+            overflow-x: auto;
+        }
+
+        .arch-flow {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-width: 800px;
+        }
+
+        .arch-node {
+            background: #09090b;
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            width: 140px;
+            position: relative;
+        }
+
+        .arch-node i {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .arch-node span {
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .arch-arrow {
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            animation: pulse-arrow 2s infinite;
+        }
+
+        @keyframes pulse-arrow {
+            0% { opacity: 0.3; transform: translateX(0); }
+            50% { opacity: 1; transform: translateX(5px); }
+            100% { opacity: 0.3; transform: translateX(0); }
+        }
+
+        /* Projects */
+        .project-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 4rem;
+        }
+
+        .project-header {
+            padding: 2.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .project-content {
+            padding: 2.5rem;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 991px) {
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .list-check {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .list-check li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        .list-check li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-primary);
+            font-weight: bold;
+        }
+
+        /* Skills */
+        .skill-category {
+            margin-bottom: 2rem;
         }
         
-        @media (max-width: 992px) {
-            .navbar-collapse {
-                position: relative;
-                margin-top: 10px;
-                padding: 15px;
-                border-radius: 5px;
-                max-height: 70vh;
-                overflow-y: auto;
-            }
-            
-            .nav-item {
-                margin-bottom: 5px;
-            }
-            
-            .nav-link {
-                padding: 10px 15px;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            }
-            
-            .navbar-toggler {
-                border: 1px solid rgba(255, 255, 255, 0.5);
-                padding: 0.25rem 0.5rem;
-                margin-right: 15px;
-            }
-            
-            .navbar-toggler-icon {
-                background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-            }
+        .skill-category h4 {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
         }
+
+        .skill-category h4 i {
+            margin-right: 0.5rem;
+            color: var(--accent-primary);
+        }
+
+        /* Contact */
+        .contact-item {
+            display: flex;
+            align-items: center;
+            padding: 1.5rem;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .contact-item:hover {
+            background: var(--bg-surface-hover);
+            transform: translateY(-2px);
+            color: var(--text-primary);
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--accent-primary);
+            width: 40px;
+        }
+
+        /* Utilities */
+        .glow {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: -1;
+            opacity: 0.15;
+        }
+
+        .glow-1 { top: 10%; left: 0; width: 400px; height: 400px; background: #3b82f6; }
+        .glow-2 { bottom: 10%; right: 0; width: 500px; height: 500px; background: #8b5cf6; }
+
     </style>
 </head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
-        <div class="container-fluid">
-            <a class="navbar-brand d-flex align-items-center" href="#home-content">
-                <img src="mupicture.jpg" alt="Logo" width="30" height="30" class="me-2 rounded-circle">
-                <span>Port Folio</span>
+<body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-offset="100">
+
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#hero">
+                <img src="mupicture.jpg" alt="Logo" width="32" height="32" class="me-2 rounded-circle" style="object-fit: cover; border: 2px solid var(--accent-primary);">
+                <span class="text-mono" style="font-size: 0.95em;">Prakash Kumar</span>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto me-3">
-                    <li class="nav-item"><a class="nav-link" href="#home-content">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about-content">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#skill-content">Skills</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#projects-content">Projects</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact-content">Contact</a></li>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#architecture">Architecture</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Case Studies</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
                 </ul>
+                <div class="d-lg-none mt-3">
+                    <a href="#contact" class="btn btn-primary-custom w-100 mb-2">Contact Me</a>
+                    <a href="prakashkumarresumeex.pdf" target="_blank" class="btn btn-outline-custom w-100">Resume</a>
+                </div>
+            </div>
+            <div class="d-none d-lg-flex ms-3 gap-2">
+                <a href="#contact" class="btn btn-primary-custom">Contact Me</a>
+                <a href="prakashkumarresumeex.pdf" target="_blank" class="btn btn-outline-custom px-3" title="View Resume"><i class="fas fa-file-pdf"></i></a>
             </div>
         </div>
     </nav>
 
-    <section id="home-content" class="content-section container mt-2">
-        <div class="row align-items-center">
-            <div class="col-md-6 order-md-2 text-center mb-md-0 mt-4">
-                <img src="mupicture.jpg" alt="Profile Image" class="profile-img img-fluid mt-1">
-            </div>
-            <div class="col-md-6 order-md-1 mt-4">
-                <h1 class="display-4">Hello Friends!</h1>
-                <h2 class="h3">I am Prakash Kumar Daram</h2>
-                <h1 class="h3">Full Stack Engineer (Django, Node.js & Next.js)</h1>
-                <p class="lead">Please follow the Navbar actions to know more about me.</p>
-                <!-- Social Icons Row -->
-                <div class="d-flex justify-content-start align-items-center mt-4 gap-3">
-                    <!-- WhatsApp -->
-                    <a href="#" onclick="openWhatsApp(); return false;" title="WhatsApp" style="color: #25D366; font-size: 2rem;"><i class="fab fa-whatsapp"></i></a>
-                    <!-- Resume -->
-                    <a href="prakashkumarresume.pdf" target="_blank" title="Resume" style="color: #e67e22; font-size: 2rem;"><i class="fas fa-file-alt"></i></a>
-                    <!-- LinkedIn -->
-                    <a href="https://www.linkedin.com/in/prakash-kumar-daram-891191298/" target="_blank" title="LinkedIn" style="color: #0077b5; font-size: 2rem;"><i class="fab fa-linkedin"></i></a>
-                    <!-- GitHub with light background -->
-                    <a href="https://github.com/prakash-python" target="_blank" title="GitHub" style="background: white; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; box-shadow: 0 1px 4px rgba(0,0,0,0.08);"><i class="fab fa-github" style="color: #333; font-size: 2rem;"></i></a>
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-7 animate__animated animate__fadeInUp">
+                    <div class="d-inline-block px-3 py-1 rounded-pill mb-4" style="background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.2); color: #60a5fa; font-size: 0.9rem; font-weight: 500;">
+                        Available for Engineering Roles
+                    </div>
+                    <h1 class="hero-title">Backend Engineer | <span class="text-gradient">AI-Powered Systems Developer</span></h1>
+                    <p class="hero-summary">
+                        Hi, I’m <strong>Prakash Kumar Daram</strong>. I design and build scalable, production-ready backend architectures, specializing in async task processing and LLM integration.
+                    </p>
+                    <ul class="hero-list">
+                        <li><i class="fas fa-server"></i> Django backend architecture & robust REST APIs</li>
+                        <li><i class="fas fa-cogs"></i> Background processing pipelines using Celery & Redis</li>
+                        <li><i class="fas fa-brain"></i> Integrating OCR & LLMs for automated data validation</li>
+                    </ul>
+                    <div class="d-flex gap-3 mt-5">
+                        <a href="#projects" class="btn btn-primary-custom">View Projects</a>
+                        <a href="#contact" class="btn btn-outline-custom">Get in Touch</a>
+                    </div>
+                </div>
+                <div class="col-lg-5 d-none d-lg-block animate__animated animate__fadeIn animate__delay-1s text-center">
+                    <img src="mupicture.jpg" alt="Prakash Kumar Daram" class="img-fluid" style="border: 5px solid #27272a; border-radius: 15px 100px; max-width: 300px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); transition: all 0.3s ease;" onmouseover="this.style.borderColor='#3b82f6'; this.style.transform='translateY(-5px)';" onmouseout="this.style.borderColor='#27272a'; this.style.transform='translateY(0)';">
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="about-content" class="content-section container py-5">
-        <div class="row">
-            <div class="col-12">
-                <h2 class="text-center mb-4">About Me</h2>
-                <p class="text-center">
-                    Hi, I’m <span class="s1">Prakash Kumar Daram</span>, an <span class="s1">MCA Graduate and Full Stack Engineer</span> specializing in designing and developing 
-                    <span class="s1">scalable, production-ready web platforms</span>. 
-                    I work extensively with <span class="s1">Django, Node.js, Next.js, REST APIs, PostgreSQL, and Prisma ORM</span> to build secure, high-performance backend systems 
-                    and modern frontend applications.
-                    <br><br>
-                    Currently, I’m working at <span class="s1">Viprata Software Services Pvt Ltd</span>, where I focus on backend architecture, API design, database optimization, 
-                    and building enterprise-grade solutions. I’m passionate about system design, clean architecture, and creating reliable software that scales efficiently in real-world production environments.
-                </p>
-                
-                <h3 class="text-center mt-5">Certifications</h3>
-                <ul class="list-unstyled">
-                    <li class="mb-2">✅ Achieved a <b>Python Course Completion Certificate</b> for mastering Python concepts and development.</li>
-                    <li class="mb-2">✅ Received a certification for <b>UI Development</b> during my internship at graduation, 2023.</li>
-                    <li class="mb-2">✅ Completed a free online course and received a certification from <b>Great Learning</b>, 2024.</li>
-                </ul>
-                
-                <h3 class="text-center mt-5">Achievements</h3>
-                <ul class="list-unstyled">
-                    <li class="mb-2">🏆 <strong><span class="s1">Academic Excellence:</span></strong> Received a <b><span class="s1">prize for achieving full marks in Physics</span></b> during my school education.</li>
-                    <li class="mb-2">🏅 <strong><span class="s1">Best Employee Award:</span></strong> Honored with the <b><span class="s1">Best Employee Award</span></b> while working at <b><span class="s1">DMart</span></b> as part of my course period.</li>
-                </ul>
-                
-                <h3 class="text-center mt-5">Interests</h3>
-                <ul class="list-unstyled text-center">
-                    <b><span class="s1"><li class="mb-2">🤖 Artificial Intelligence (AI)</li></span></b>
-                    <b><span class="s1"><li class="mb-2">📊 Data Analytics</li></span></b>
-                    <b><span class="s1"><li class="mb-2">📈 Machine Learning (ML)</li></span></b>
-                </ul>
-                
-                <h3 class="text-center mt-5">Future Goals</h3>
-                <ul class="list-unstyled">
-                    <li class="mb-2">🗄️ <b><span class = "s1">Aspire</span></b> to become a skilled <b><span class="s1">Data Analytics Developer</b>.</li>
-                    <li class="mb-2">💡 <b><span class="s1">Aim</span></b> to contribute to innovative projects involving <b><span class="s1">AI and Data Science</b>.</li>
-                    <li class="mb-2">⚙️ <b><span class="s1">Build scalable</span></b> SaaS and enterprise systems using <b><span class="s1">Django, Node.js, Next.js and Prisma ORM</b>.</li>
-                    <li class="mb-2">☁️ Learn cloud deployment, CI/CD pipelines, Docker, and production server architecture.</li>
-                </ul>
+    <!-- What Makes Me Different -->
+    <section id="about" style="background: var(--bg-surface);">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">What Makes Me Different</h2>
+                <p class="section-subtitle mx-auto">I don't just build CRUD apps. I engineer real-world systems that handle complex workflows, asynchronous operations, and AI intelligence.</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="glass-card">
+                        <i class="fas fa-network-wired diff-icon"></i>
+                        <h4>Real-World Systems</h4>
+                        <p class="text-secondary">Experience building multi-role architectures serving different operational hierarchies within the same data ecosystem.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="glass-card">
+                        <i class="fas fa-history diff-icon"></i>
+                        <h4>Async Processing</h4>
+                        <p class="text-secondary">Expertise in Celery & Redis to offload heavy OCR workloads and LLM calls, ensuring the API server remains fast and responsive.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="glass-card">
+                        <i class="fas fa-robot diff-icon"></i>
+                        <h4>AI Integration</h4>
+                        <p class="text-secondary">Transforming raw text from documents into structured JSON datasets using prompt engineering and reliable LLM pipelines.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="glass-card">
+                        <i class="fas fa-layer-group diff-icon"></i>
+                        <h4>E2E Ownership</h4>
+                        <p class="text-secondary">From database schema design and Django models to securing JWT endpoints and rendering the data in React dashboards.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="skill-content" class="content-section container py-5">
-        <div class="row">
-            <div class="col-12">
-                <h2 class="text-center mb-5">My Skills</h2>
+    <!-- Architecture Highlight -->
+    <section id="architecture">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Architecture Under The Hood</h2>
+                <p class="section-subtitle">How I design systems to decouple long-running AI tasks from fast API responses.</p>
             </div>
-        </div>
-        <div class="row d-flex justify-content-center text-center">
-            <div class="col-md-4">
-                <div class="skill-accordion">
-                    <div class="skill-box">
-                        <span>Python</span>
-                    </div>
-                    <div class="skill-description">
-                        Created a Veg Mart application using Python, demonstrating proficiency in Python's core concepts and implementing effective solutions for real-world scenarios.
-                    </div>
-                </div>
-                
-                <div class="skill-accordion">
-                    <div class="skill-box">
-                        <span>MySQL</span>
-                    </div>
-                    <div class="skill-description">
-                        Utilized MySQL in multiple projects to design efficient database structures, ensuring data integrity and seamless performance.
-                    </div>
-                </div>
-                
-                <div class="skill-accordion">
-                    <div class="skill-box">
-                        <span>Python & MySQL</span>
-                    </div>
-                    <div class="skill-description">
-                        Developed a Bank Management System using Python and MySQL, showcasing strong problem-solving skills, database management expertise, and logical thinking.
-                    </div>
-                </div>
-                
-                <div class="skill-accordion">
-                    <div class="skill-box">
-                        <span>Html & CSS</span>
-                    </div>
-                    <div class="skill-description">
-                        I have the ability to create static web pages using HTML and CSS. HTML helps me structure the content in an organized manner, while CSS enhances the design, ensuring the web pages are visually appealing and user-friendly.
-                    </div>
-                </div>
-                
-                <div class="skill-accordion">
-                    <div class="skill-box">
-                        <span>Bootstrap</span>
-                    </div>
-                    <div class="skill-description">
-                        I have working knowledge of Bootstrap's responsive grid system and components. I can effectively utilize Bootstrap classes to create visually appealing and mobile-friendly web pages, implementing responsive layouts and UI components.
-                    </div>
-                </div>
-                
-                <div class="skill-accordion">
-                    <div class="skill-box">
-                        <span>Aptitude</span>
-                    </div>
-                    <div class="skill-description">
-                        I have strong aptitude skills, backed by my solid mathematical foundation. My ability to think logically and solve numerical problems efficiently helps me excel in analytical reasoning.
-                    </div>
-                </div>
 
-                <div class="skill-accordion">
-                    <div class="skill-box">
-                        <span>Next.js</span>
+            <div class="arch-diagram mb-4">
+                <div class="arch-flow">
+                    <div class="arch-node" style="border-color: #61dafb;">
+                        <i class="fab fa-react" style="color: #61dafb;"></i>
+                        <span>React SPA</span>
                     </div>
-                    <div class="skill-description">
-                        Building production-grade React applications using Next.js with server-side rendering, API routes, authentication, and performance optimization.
+                    
+                    <i class="fas fa-chevron-right arch-arrow"></i>
+                    
+                    <div class="arch-node" style="border-color: #092e20;">
+                        <i class="fab fa-python" style="color: #4b8bbe;"></i>
+                        <span>Django API</span>
+                    </div>
+                    
+                    <i class="fas fa-chevron-right arch-arrow"></i>
+                    
+                    <div class="arch-node" style="border-color: #c7254e;">
+                        <i class="fas fa-layer-group" style="color: #c7254e;"></i>
+                        <span>Redis Broker</span>
+                    </div>
+                    
+                    <i class="fas fa-chevron-right arch-arrow"></i>
+                    
+                    <div class="arch-node" style="border-color: #37b14d;">
+                        <i class="fas fa-cogs" style="color: #37b14d;"></i>
+                        <span>Celery Worker</span>
+                    </div>
+                    
+                    <i class="fas fa-chevron-right arch-arrow"></i>
+                    
+                    <div class="d-flex flex-column gap-3">
+                        <div class="arch-node" style="border-color: #f34b22; width: 120px; padding: 1rem;">
+                            <i class="fas fa-eye" style="color: #f34b22; font-size: 1.5rem;"></i>
+                            <span style="font-size: 0.8rem;">OCR</span>
+                        </div>
+                        <div class="arch-node" style="border-color: #10a37f; width: 120px; padding: 1rem;">
+                            <i class="fas fa-brain" style="color: #10a37f; font-size: 1.5rem;"></i>
+                            <span style="font-size: 0.8rem;">LLM Parse</span>
+                        </div>
                     </div>
                 </div>
             </div>
             
-            <div class="col-md-4">
-                <div class="skill-accordion">
-                    <div class="skill-box">
-                        <span>Java Script</span>
-                    </div>
-                    <div class="skill-description">
-                        I have the ability to enhance web pages using JavaScript by adding interactivity and dynamic functionality. JavaScript allows me to create responsive elements, manage events, and manipulate the DOM to improve user experience.
-                    </div>
-                </div>
-                
-                <div class="skill-accordion">
-                    <div class="skill-box">
-                        <span>Django</span>
-                    </div>
-                    <div class="skill-description">
-                        I have experience developing web applications using Django, a powerful Python framework. With Django, I can build dynamic, secure, and scalable web applications efficiently.
-                    </div>
-                </div>
-                
-                <div class="skill-accordion">
-                    <div class="skill-box">
-                        <span>Django REST Framework</span>
-                    </div>
-                    <div class="skill-description">
-                        I have the ability to create RESTful APIs using DRF, including writing serializers, models, and viewsets. I understand API authentication, permissions, and have implemented pagination to optimize API responses for better performance.
-                    </div>
-                </div>
-                
-                <div class="skill-accordion">
-                    <div class="skill-box">
-                        <span>React JS</span>
-                    </div>
-                    <div class="skill-description">
-                        I have basic knowledge of React and can build simple web applications using its component-based structure. I am familiar with JSX, props, and state management.
-                    </div>
-                </div>
-                
-                <div class="skill-accordion">
-                    <div class="skill-box">
-                        <span>Communication</span>
-                    </div>
-                    <div class="skill-description">
-                        I have strong communication skills, with proficiency in both English and Telugu. I can effectively convey ideas, explain technical concepts clearly, and engage in productive discussions.
-                    </div>
-                </div>
-
-                <div class="skill-accordion">
-                    <div class="skill-box">
-                        <span>Node.js</span>
-                    </div>
-                    <div class="skill-description">
-                        Backend development using Node.js for building scalable REST APIs, authentication systems, background workers, and service-based architectures.
-                    </div>
-                </div>
-
-
-
-                <div class="skill-accordion">
-                    <div class="skill-box">
-                        <span>Prisma ORM</span>
-                    </div>
-                    <div class="skill-description">
-                        Using Prisma ORM for type-safe database access, migrations, schema modeling, and clean data-layer architecture.
-                    </div>
+            <div class="row">
+                <div class="col-lg-8">
+                    <p class="text-secondary">
+                        <strong>The Pipeline:</strong> When a user uploads a financial document (e.g., a PDF bank statement), the Django API immediately returns a `job_id` so the UI isn't blocked. Redis queues the task. A Celery worker picks it up, runs it through PaddleOCR for text extraction, and then pushes the markdown to an LLM (OpenAI/Groq). The LLM parses the unstructured text into a structured JSON array of exact transactions. Finally, the worker fires a webhook callback to update the main database, and the React UI polls/receives the completed status to render the analysis dashboard.
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="projects-content" class="content-section container py-5">
-        <div class="row">
-            <div class="col-12">
-                <h2 class="text-center mb-5">My Projects</h2>
+    <!-- Projects / Case Studies -->
+    <section id="projects" style="background: var(--bg-surface);">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">System Case Studies</h2>
+                <p class="section-subtitle mx-auto">Deep dives into the production-grade platforms I've engineered.</p>
             </div>
-        </div>
-        <div class="row d-flex justify-content-center text-center">
-            <div class="col-md-4">
-                <a href="https://python-veg-inventory.onrender.com/" class="project-link">Veg Mart Inventory</a>
-                <a href="https://prakashkumarpython.pythonanywhere.com/" class="project-link">Port_Folio</a>
-                <a href="https://github.com/prakash-python/My_Calculater" class="project-link">My_Simple_Calculater</a>
-            </div>
-            <div class="col-md-4">
-                <a href="https://github.com/prakash-python/python_mysql_bank_project" class="project-link">Bank Management System</a>
-                <a href="https://github.com/prakash-python/Mail_Sending_System" class="project-link">Mail Sending</a>
-            </div>
-        </div>
-    </section>
 
-    <section id="contact-content" class="content-section container py-5">
-        <div class="row">
-            <div class="col-12">
-                <h2 class="text-center mb-5">Contact Me</h2>
-            </div>
-        </div>
-<div class="container d-flex justify-content-center text-center">
-    
-    <div class="row justify-content-center">
-        <!-- WhatsApp -->
-        <div class="col-12 col-md-6 mb-4">
-            <div class="contact-box text-center" onclick="openWhatsApp()" style="cursor: pointer;">
-                <div class="d-flex flex-column align-items-center">
-                    <div class="d-flex align-items-center">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="30" height="30" class="me-2" alt="WhatsApp">
-                        <span>Message me at +91 6302581405</span>
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
-
-        <!-- GitHub -->
-        <div class="col-12 col-md-6 mb-4">
-            <a href="https://github.com/prakash-python" class="text-decoration-none">
-                <div class="contact-box">
-                    <img src="https://cdn-icons-png.freepik.com/512/4494/4494740.png" width="30" height="30" class="me-2" alt="GitHub">
-                    <span>Git Account</span>
-                </div>
-            </a>
-        </div>
-
-        <!-- LinkedIn -->
-        <div class="col-12 col-md-6 mb-4">
-            <a href="https://www.linkedin.com/in/prakash-kumar-daram-891191298/" class="text-decoration-none">
-                <div class="contact-box">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/LinkedIn_icon.svg/2048px-LinkedIn_icon.svg.png" width="30" height="30" class="me-2" alt="LinkedIn">
-                    <span>Linked-In</span>
-                </div>
-            </a>
-        </div>
-
-        <!-- Gmail -->
-        <div class="col-12 col-md-6 mb-4">
-            <div class="contact-box">
-                <img src="https://png.pngtree.com/png-vector/20220612/ourmid/pngtree-gmail-icon-in-simple-style-on-a-white-background-png-image_4998692.png" width="30" height="30" class="me-2" alt="Gmail">
-                <span>@daramprakashkumar587@gmail.com</span>
-            </div>
-        </div>
-    </div>
-</div>
-
-    </section>
-
-    <footer class="footer">
-        <div class="footer-marquee">
-            <marquee scrollamount="8" direction="left">
-                <div class="d-inline-flex flex-column align-items-center py-2">
+            <!-- Project 1: AutoDoc Validator -->
+            <div class="project-card">
+                <div class="project-header d-flex justify-content-between align-items-center flex-wrap gap-3">
                     <div>
-                        <a href="https://maps.app.goo.gl/jdhAo8yFBiag97k96?g_st=ac" class="me-4" style="color: white; text-decoration: none;">
-                        <img src="https://www.home-interiors.in/wp-content/uploads/2024/11/Slop-Roof-3400-1.jpg" alt="Location" width="40" height="25" class="me-2">
-                        <span>Reddy's Ramalayam Back side main road Prathipadu, near cable tv office(m),Guntur(dt)</span></a>
+                        <h3 class="mb-2">1. AI-Powered Document Intelligence Microservice (AutoDoc-Validator)</h3>
+                        <div class="d-flex flex-wrap">
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">Django DRF</span>
+                            <span class="tech-badge">Celery</span>
+                            <span class="tech-badge">Redis</span>
+                            <span class="tech-badge">PaddleOCR</span>
+                            <span class="tech-badge">LLM (OpenAI)</span>
+                        </div>
                     </div>
-                    <div style="font-size: 13px;">
-                        <img src="https://w7.pngwing.com/pngs/915/706/png-transparent-blue-call-icon-dialer-android-google-play-telephone-phone-blue-text-telephone-call-thumbnail.png" alt="Phone" width="15" height="15" class="me-1">
-                        <span class="me-4">+91 6302581405</span>
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/LinkedIn_icon.svg/2048px-LinkedIn_icon.svg.png" alt="LinkedIn" width="15" height="15" class="me-1">
-                        <a href="https://www.linkedin.com/in/prakash-kumar-daram-891191298/" class="me-4" style="color: white; text-decoration: none;">Linked-In</a>
-                        <img src="https://icon-library.com/images/git-icon/git-icon-6.jpg" alt="GitHub" width="13" height="13" class="me-1">
-                        <a href="https://github.com/prakash-python" class="me-4" style="color: white; text-decoration: none;">Git Account</a>
-                        <img src="https://static.vecteezy.com/system/resources/previews/013/948/544/non_2x/gmail-logo-on-transparent-white-background-free-vector.jpg" alt="Email" width="15" height="15" class="me-1">
-                        <span>@daramprakashkumar587@gmail.com</span>
+                    <a href="https://github.com/prakash-python" target="_blank" class="btn btn-outline-custom"><i class="fab fa-github me-2"></i>View Code</a>
+                </div>
+                <div class="project-content">
+                    <div class="project-grid">
+                        <div>
+                            <h5 class="text-primary-custom mb-3"><i class="fas fa-exclamation-circle text-warning me-2"></i>The Problem</h5>
+                            <p class="text-secondary mb-4">Manual verification of loan documents (bank statements, payslips) is an extremely slow, error-prone bottleneck delaying loan approvals. Rule-based parsers fail because every bank (SBI, HDFC, ICICI) formats statements differently.</p>
+                            
+                            <h5 class="text-primary-custom mb-3"><i class="fas fa-lightbulb text-success me-2"></i>The Solution</h5>
+                            <p class="text-secondary">I built a standalone microservice that asynchronously ingests documents, runs OCR, and utilizes Large Language Models to intelligently normalize transactions across *any* bank format into structured JSON, firing a webhook callback when complete.</p>
+                        </div>
+                        <div>
+                            <h5 class="mb-3">My Contributions & Features</h5>
+                            <ul class="list-check">
+                                <li><strong>Async Pipeline:</strong> Engineered the Celery worker queue to prevent 1-2 minute OCR jobs from blocking API requests.</li>
+                                <li><strong>LLM Normalization:</strong> Integrated OpenAI to bypass complex regex parsing, achieving high accuracy in extracting transaction tables from unstructured OCR markdown.</li>
+                                <li><strong>Webhook Callback:</strong> Developed robust background delivery mechanism with exponential backoff retries to guarantee result delivery to the main LOS.</li>
+                                <li><strong>Concurrency Locks:</strong> Implemented PostgreSQL <code>select_for_update</code> locks to prevent duplicate Celery workers from racing on the same job.</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </marquee>
+            </div>
+
+            <!-- Project 2: Insta EMI Backend -->
+            <div class="project-card">
+                <div class="project-header d-flex justify-content-between align-items-center flex-wrap gap-3">
+                    <div>
+                        <h3 class="mb-2">2. Insta EMI Core Backend (Loan Origination System)</h3>
+                        <div class="d-flex flex-wrap">
+                            <span class="tech-badge">Django</span>
+                            <span class="tech-badge">PostgreSQL</span>
+                            <span class="tech-badge">Celery</span>
+                            <span class="tech-badge">JWT</span>
+                            <span class="tech-badge">AES-256 Encryption</span>
+                            <span class="tech-badge">Groq API</span>
+                        </div>
+                    </div>
+                    <a href="https://github.com/prakash-python" target="_blank" class="btn btn-outline-custom"><i class="fab fa-github me-2"></i>View Code</a>
+                </div>
+                <div class="project-content">
+                    <div class="project-grid">
+                        <div>
+                            <h5 class="text-primary-custom mb-3"><i class="fas fa-exclamation-circle text-warning me-2"></i>The Problem</h5>
+                            <p class="text-secondary mb-4">Lending involves 9 different employee roles (sales, verification, credit). A monolithic database schema without strict boundaries leads to data leaks. Financial data (PAN, Income) must be encrypted at rest per compliance.</p>
+                            
+                            <h5 class="text-primary-custom mb-3"><i class="fas fa-lightbulb text-success me-2"></i>The Solution</h5>
+                            <p class="text-secondary">A highly modular Django REST API comprising 14 apps, segregating namespaces by role. Leveraged JWT claims for stateless role verification, and PyCryptodome for transparent field-level AES encryption.</p>
+                        </div>
+                        <div>
+                            <h5 class="mb-3">My Contributions & Features</h5>
+                            <ul class="list-check">
+                                <li><strong>9-Tier Role Architecture:</strong> Enforced rigorous data isolation so a Process Associate and a Regional Sales Manager access entirely different views of the same application.</li>
+                                <li><strong>Data Security:</strong> Implemented transparent AES-256 encryption on Django model fields safeguarding PAN, Aadhaar, and income figures.</li>
+                                <li><strong>Integrations:</strong> Built API boundaries to connect with live CIBIL bureau APIs, AWS/Azure Blob storage, and the standalone AuthDoc Validator service.</li>
+                                <li><strong>Fuzzy Matching:</strong> Used FuzzyWuzzy for intelligent matching of entered company names against the employer master list.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3: Insta EMI Frontend -->
+            <div class="project-card">
+                <div class="project-header d-flex justify-content-between align-items-center flex-wrap gap-3">
+                    <div>
+                        <h3 class="mb-2">3. Insta EMI Multi-Role Dashboard</h3>
+                        <div class="d-flex flex-wrap">
+                            <span class="tech-badge">React 19</span>
+                            <span class="tech-badge">Vite</span>
+                            <span class="tech-badge">Tailwind CSS</span>
+                            <span class="tech-badge">React Query</span>
+                            <span class="tech-badge">pdfjs</span>
+                            <span class="tech-badge">ApexCharts</span>
+                        </div>
+                    </div>
+                    <a href="https://github.com/prakash-python" target="_blank" class="btn btn-outline-custom"><i class="fab fa-github me-2"></i>View Code</a>
+                </div>
+                <div class="project-content">
+                    <div class="project-grid">
+                        <div>
+                            <h5 class="text-primary-custom mb-3"><i class="fas fa-exclamation-circle text-warning me-2"></i>The Problem</h5>
+                            <p class="text-secondary mb-4">Building a single React SPA that manages a public marketplace and 100+ protected routes across 9 completely different internal operational dashboards without shipping an enormous, slow bundle.</p>
+                            
+                            <h5 class="text-primary-custom mb-3"><i class="fas fa-lightbulb text-success me-2"></i>The Solution</h5>
+                            <p class="text-secondary">A centralized routing structure using React Router v7 and custom ProtectedRoute wrappers linked to JWT context. Optimized server-state using TanStack React Query for aggressive caching and background fetching.</p>
+                        </div>
+                        <div>
+                            <h5 class="mb-3">My Contributions & Features</h5>
+                            <ul class="list-check">
+                                <li><strong>Centralized Route Guards:</strong> Managed JWT authorization so unauthorized roles never render protected components or trigger data fetches.</li>
+                                <li><strong>In-Browser PDF Verification:</strong> Integrated <code>pdfjs</code> to allow Process Associates to visually inspect huge document payloads directly in the browser side-by-side with OCR results.</li>
+                                <li><strong>Multi-Step Form Persistence:</strong> Handled complex 5-step loan applications using Formik, storing intermediate state and handling large document uploads cleanly.</li>
+                                <li><strong>Data Visualization:</strong> Built performance KPI trees for National and Zonal sales managers using ApexCharts to track volume.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+                </div>
+            </div>
+
+            <!-- Other Projects Section -->
+            <h4 class="mt-5 mb-4 text-center">Other Featured Projects</h4>
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-4 col-lg-3">
+                    <a href="https://python-veg-inventory.onrender.com/" target="_blank" class="glass-card d-block text-center text-decoration-none p-3 h-100">
+                        <i class="fas fa-leaf mb-2 text-success" style="font-size: 2rem;"></i>
+                        <h6 class="mb-1 text-primary-custom" style="color: var(--text-primary);">Veg Mart Inventory</h6>
+                    </a>
+                </div>
+                <div class="col-md-4 col-lg-3">
+                    <a href="https://github.com/prakash-python/python_mysql_bank_project" target="_blank" class="glass-card d-block text-center text-decoration-none p-3 h-100">
+                        <i class="fas fa-university mb-2 text-primary" style="font-size: 2rem;"></i>
+                        <h6 class="mb-1 text-primary-custom" style="color: var(--text-primary);">Bank Management</h6>
+                    </a>
+                </div>
+                <div class="col-md-4 col-lg-3">
+                    <a href="https://github.com/prakash-python/Mail_Sending_System" target="_blank" class="glass-card d-block text-center text-decoration-none p-3 h-100">
+                        <i class="fas fa-envelope mb-2 text-warning" style="font-size: 2rem;"></i>
+                        <h6 class="mb-1 text-primary-custom" style="color: var(--text-primary);">Mail Sending System</h6>
+                    </a>
+                </div>
+                <div class="col-md-4 col-lg-3">
+                    <a href="https://github.com/prakash-python/My_Simple_Calculater" target="_blank" class="glass-card d-block text-center text-decoration-none p-3 h-100">
+                        <i class="fas fa-calculator mb-2 text-info" style="font-size: 2rem;"></i>
+                        <h6 class="mb-1 text-primary-custom" style="color: var(--text-primary);">Simple Calculator</h6>
+                    </a>
+                </div>
+                <div class="col-md-4 col-lg-3">
+                    <a href="https://prakashkumarpython.pythonanywhere.com/" target="_blank" class="glass-card d-block text-center text-decoration-none p-3 h-100">
+                        <i class="fas fa-address-card mb-2 text-secondary" style="font-size: 2rem;"></i>
+                        <h6 class="mb-1 text-primary-custom" style="color: var(--text-primary);">Old Portfolio</h6>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">Technical Arsenal</h2>
+                <p class="section-subtitle mx-auto">Technologies I use daily to build robust platforms.</p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="glass-card">
+                        <div class="skill-category">
+                            <h4><i class="fas fa-server"></i> Backend & API</h4>
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">Django</span>
+                            <span class="tech-badge">Django REST Framework</span>
+                            <span class="tech-badge">Node.js</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="glass-card">
+                        <div class="skill-category">
+                            <h4><i class="fas fa-cogs"></i> Async & Systems</h4>
+                            <span class="tech-badge">Celery</span>
+                            <span class="tech-badge">Redis</span>
+                            <span class="tech-badge">Webhooks</span>
+                            <span class="tech-badge">JWT Auth</span>
+                            <span class="tech-badge">Uvicorn / ASGI</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="glass-card">
+                        <div class="skill-category">
+                            <h4><i class="fas fa-brain"></i> AI & Processing</h4>
+                            <span class="tech-badge">OpenAI API</span>
+                            <span class="tech-badge">Groq API</span>
+                            <span class="tech-badge">PaddleOCR</span>
+                            <span class="tech-badge">PyMuPDF</span>
+                            <span class="tech-badge">Prompt Engineering</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="glass-card">
+                        <div class="skill-category">
+                            <h4><i class="fas fa-database"></i> Database & Data Layer</h4>
+                            <span class="tech-badge">PostgreSQL</span>
+                            <span class="tech-badge">MySQL</span>
+                            <span class="tech-badge">Prisma ORM</span>
+                            <span class="tech-badge">Django ORM</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="glass-card">
+                        <div class="skill-category">
+                            <h4><i class="fas fa-desktop"></i> Frontend</h4>
+                            <span class="tech-badge">HTML & CSS</span>
+                            <span class="tech-badge">JavaScript</span>
+                            <span class="tech-badge">React JS</span>
+                            <span class="tech-badge">Next.js</span>
+                            <span class="tech-badge">Bootstrap</span>
+                            <span class="tech-badge">Tailwind CSS</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="glass-card">
+                        <div class="skill-category">
+                            <h4><i class="fas fa-tools"></i> Infrastructure</h4>
+                            <span class="tech-badge">Git & GitHub</span>
+                            <span class="tech-badge">Azure Blob Storage</span>
+                            <span class="tech-badge">Linux / Bash</span>
+                            <span class="tech-badge">Supervisor</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Added old skills block -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="glass-card">
+                        <div class="skill-category">
+                            <h4><i class="fas fa-comments"></i> Soft Skills & Logic</h4>
+                            <span class="tech-badge">Aptitude</span>
+                            <span class="tech-badge">Communication</span>
+                            <span class="tech-badge">Problem Solving</span>
+                            <span class="tech-badge">Analytical Reasoning</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" style="background: var(--bg-surface);">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h2 class="section-title">Experience</h2>
+                    <p class="text-secondary">Professional timeline of shipping code to production.</p>
+                </div>
+                <div class="col-lg-8">
+                    <!-- Experience Section -->
+                    <div class="glass-card p-4 p-md-5 mb-5" style="height: auto;">
+                        <div class="exp-item">
+                            <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap">
+                                <h4 class="mb-0">Backend Software Engineer</h4>
+                                <span class="badge text-bg-light" style="background: #e2e8f0 !important; color: #0f172a !important;">Apr 2025 - Present</span>
+                            </div>
+                            <h5 class="text-gradient">Viprata Software Services Pvt Ltd</h5>
+                            <ul class="list-check mt-3 text-secondary">
+                                <li>Designed and developed scalable backend Django REST architectures for financial platforms.</li>
+                                <li>Integrated CIBIL APIs, implemented JWT auth, and built secure workflows.</li>
+                                <li>Engineered a dynamic offer-matching decision engine based on rule parsing.</li>
+                                <li>Built large-scale Pandas data pipelines moving 2.3M+ relational records.</li>
+                            </ul>
+                        </div>
+                        
+                         <div class="exp-item">
+                            <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap">
+                                <h4 class="mb-0">Junior Python Developer</h4>
+                                <span class="text-secondary" style="font-size: 0.9em;">Nov 2024 - Apr 2025</span>
+                            </div>
+                            <h5 class="text-primary-custom" style="color: var(--text-primary);">V V Cube Consultancy Services</h5>
+                            <ul class="list-check mt-3 text-secondary">
+                                <li>Mentored students in Python, Django, MySQL, and Full-Stack development.</li>
+                                <li>Developed internal automation tools for student reporting & email notifications.</li>
+                                <li>Supported backend debugging, API logic design and database workflow optimization.</li>
+                            </ul>
+                        </div>
+
+                         <div class="exp-item">
+                            <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap">
+                                <h4 class="mb-0">Sales Associate</h4>
+                                <span class="text-secondary" style="font-size: 0.9em;">Oct 2023 - Jan 2025</span>
+                            </div>
+                            <h5 class="text-primary-custom" style="color: var(--text-primary);">DMart</h5>
+                            <ul class="list-check mt-3 text-secondary">
+                                <li>Awarded Best Employee in 2024 for outstanding performance in stock and inventory management.</li>
+                            </ul>
+                        </div>
+
+                         <div class="exp-item border-0 pb-0">
+                            <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap">
+                                <h4 class="mb-0">UI Development Intern</h4>
+                                <span class="text-secondary" style="font-size: 0.9em;">Apr 2023 - Jul 2023</span>
+                            </div>
+                            <h5 class="text-primary-custom" style="color: var(--text-primary);">REDCARPET Animation Visual FX</h5>
+                            <p class="text-secondary mt-2 mb-0">
+                                Built static web pages using HTML, CSS, JavaScript, and ReactJS.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Education Section -->
+                    <h2 class="section-title mt-5">Education</h2>
+                    <p class="text-secondary mb-4">Academic background and certifications.</p>
+                    <div class="glass-card p-4 p-md-5" style="height: auto;">
+                        <div class="exp-item">
+                            <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap">
+                                <h4 class="mb-0">Master's Of Computer Applications</h4>
+                                <span class="badge text-bg-light" style="background: #e2e8f0 !important; color: #0f172a !important;">2025 • 81%</span>
+                            </div>
+                            <h5 class="text-primary-custom" style="color: var(--text-primary);">Pedanandipadu College of Arts & Sciences</h5>
+                        </div>
+
+                        <div class="exp-item border-0 pb-0">
+                            <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap">
+                                <h4 class="mb-0">B.Sc. in Statistics and Computer Science</h4>
+                                <span class="badge text-bg-light" style="background: #e2e8f0 !important; color: #0f172a !important;">2023 • 81%</span>
+                            </div>
+                            <h5 class="text-primary-custom" style="color: var(--text-primary);">Jagarlamudi Kuppuswamy Choudary College</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Footer -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">Let's Connect</h2>
+                <p class="section-subtitle mx-auto">Currently open to new opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you!</p>
+            </div>
+
+            <div class="row justify-content-center g-4 max-w-4xl mx-auto" style="max-width: 800px;">
+                <div class="col-md-4">
+                    <a href="mailto:daramprakashkumar587@gmail.com" class="contact-item flex-column text-center">
+                        <i class="fas fa-envelope contact-icon mb-3 text-center"></i>
+                        <h5 class="mb-1">Email</h5>
+                        <span class="text-secondary" style="font-size: 0.85rem">daramprakashkumar587<br>@gmail.com</span>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="https://www.linkedin.com/in/prakash-kumar-daram-891191298/" target="_blank" class="contact-item flex-column text-center">
+                        <i class="fab fa-linkedin contact-icon mb-3 text-center"></i>
+                        <h5 class="mb-1">LinkedIn</h5>
+                        <span class="text-secondary" style="font-size: 0.85rem">Connect professionally</span>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="https://github.com/prakash-python" target="_blank" class="contact-item flex-column text-center">
+                        <i class="fab fa-github contact-icon mb-3 text-center"></i>
+                        <h5 class="mb-1">GitHub</h5>
+                        <span class="text-secondary" style="font-size: 0.85rem">View my code</span>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="#" onclick="openWhatsApp(); return false;" class="contact-item flex-column text-center">
+                        <i class="fab fa-whatsapp contact-icon mb-3 text-center text-success"></i>
+                        <h5 class="mb-1">WhatsApp</h5>
+                        <span class="text-secondary" style="font-size: 0.85rem">+91 6302581405</span>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="prakashkumarresumeex.pdf" target="_blank" class="contact-item flex-column text-center">
+                        <i class="fas fa-file-pdf contact-icon mb-3 text-center text-danger"></i>
+                        <h5 class="mb-1">Resume</h5>
+                        <span class="text-secondary" style="font-size: 0.85rem">Download PDF</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-4 border-top" style="border-color: var(--border-color) !important;">
+        <div class="container text-center">
+            <p class="text-secondary mb-0 text-mono">Built with <i class="fas fa-heart text-danger"></i> by Prakash Kumar Daram &copy; 2024</p>
         </div>
     </footer>
 
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Back to Top Arrow Button -->
-    <button id="backToTopBtn" title="Go to top">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-    <style>
-        #backToTopBtn {
-            display: none;
-            position: fixed;
-            bottom: 32px;
-            right: 24px;
-            z-index: 2000;
-            background: linear-gradient(135deg, #f5cba7 60%, #ca6f1e 100%);
-            color: #222;
-            border: none;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.18);
-            font-size: 1.4rem;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: background 0.3s, color 0.3s, box-shadow 0.3s, transform 0.2s;
-            outline: none;
+    <script>
+        // WhatsApp Integration
+        function openWhatsApp() {
+            const phoneNumber = "916302581405"; 
+            const defaultMessage = "Hello Prakash, I came across your portfolio and wanted to connect with you about an engineering role.";
+            const encodedMessage = encodeURIComponent(defaultMessage);
+            window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
         }
-        #backToTopBtn:hover {
-            background: linear-gradient(135deg, #ca6f1e 60%, #f5cba7 100%);
-            color: #fff;
-            box-shadow: 0 6px 18px rgba(0,0,0,0.22);
-            transform: translateY(-4px) scale(1.08);
-        }
-        #backToTopBtn i {
-            pointer-events: none;
-        }
-    </style>
 
-<script>
-    // ✅ Make openWhatsApp global
-    function openWhatsApp() {
-        const phoneNumber = "916302581405"; // Add country code, no + or spaces
-        const defaultMessage = "Hello Prakash, I came across your portfolio and wanted to connect with you...";
-        const encodedMessage = encodeURIComponent(defaultMessage);
-        const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-        
-        window.open(whatsappUrl, '_blank');
-    }
-
-    document.addEventListener('DOMContentLoaded', function() {
-        // Back to Top Arrow logic
-        const backToTopBtn = document.getElementById('backToTopBtn');
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > 300) {
-                backToTopBtn.style.display = 'flex';
+        // Add scrolled class to navbar
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar-custom');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(9, 9, 11, 0.95)';
+                navbar.style.borderBottom = '1px solid rgba(255, 255, 255, 0.1)';
             } else {
-                backToTopBtn.style.display = 'none';
+                navbar.style.background = 'rgba(9, 9, 11, 0.8)';
+                navbar.style.borderBottom = '1px solid var(--border-color)';
             }
         });
-        backToTopBtn.addEventListener('click', function() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
 
-        const sections = document.querySelectorAll('.content-section');
-        const navLinks = document.querySelectorAll('.nav-link');
-        const navbarToggler = document.querySelector('.navbar-toggler');
-        const navbarCollapse = document.querySelector('.navbar-collapse');
-
-        // --- Fix: Always update hash and show correct section on reload ---
-        function showSection(sectionId) {
-            sections.forEach(section => {
-                section.style.display = (section.id === sectionId) ? 'block' : 'none';
-            });
-            if (window.innerWidth <= 992 && navbarCollapse.classList.contains('show')) {
-                navbarToggler.click();
-            }
-            window.scrollTo(0, 0);
-        }
-
-        // Mouseover: update hash and show section
-        navLinks.forEach(link => {
-            link.addEventListener('mouseover', function() {
-                if (window.innerWidth > 992) {
-                    const targetId = this.getAttribute('href').substring(1);
-                    history.pushState(null, '', ' ');
-                    showSection(targetId);
-                }
-            });
-            link.addEventListener('click', function(e) {
-                if (window.innerWidth <= 992) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href').substring(1);
-                    history.pushState(null, '', ' ');
-                    showSection(targetId);
+        // Smooth scroll function and prevent hash appending in URL
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    const navbarHeight = document.querySelector('.navbar-custom').offsetHeight;
+                    const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - navbarHeight - 20; // 20px padding offset
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
                 }
             });
         });
-
-        // On load, show correct section based on hash
-        let hash = window.location.hash;
-        if (hash && document.getElementById(hash.substring(1))) {
-            showSection(hash.substring(1));
-        } else {
-            showSection('home-content');
-        }
-
-        window.addEventListener('hashchange', function() {
-            const hash = window.location.hash;
-            showSection(hash ? hash.substring(1) : 'home-content');
-        });
-    });
-</script>
-
+    </script>
 </body>
 </html>
